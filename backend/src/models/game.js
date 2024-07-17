@@ -9,7 +9,7 @@ const gameSchema = new mongoose.Schema({
     'Developer(s)': String,
     'Publisher(s)': String,
 
-}, {collection: 'jogos'})
+}, {collection: 'Jogos'})
 
 
 const game = mongoose.model('game', gameSchema)

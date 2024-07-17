@@ -1,12 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 import game from '../models/game.js'
 
 async function connectDatabase() {
-    mongoose.connect("mongodb+srv://lion:atlaslion18@rascunho-api.mnbdqfx.mongodb.net/Jogos?retryWrites=true&w=majority&appName=rascunho-api")       
+    mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos");
 }
 
 async function ListarJogos() {
-    return await game.find()
+    return await game.find();
 }
 
-export {connectDatabase, ListarJogos}
+export {connectDatabase, ListarJogos};
