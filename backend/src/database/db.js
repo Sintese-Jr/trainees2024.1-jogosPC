@@ -9,4 +9,8 @@ async function ListarJogos() {
     return await game.find();
 }
 
-export {connectDatabase, ListarJogos};
+async function BuscarJogos(nome) {
+    return await game.find({Game: new RegExp(nome, 'i')});
+}
+
+export {connectDatabase, ListarJogos, BuscarJogos};
