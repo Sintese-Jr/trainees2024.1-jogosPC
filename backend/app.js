@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
+import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
 
 const app = express();
 app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
@@ -8,11 +8,6 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
 const PORT = 3000; 
-
-connectDatabase()
-    .then(() => console.log("Banco de dados conectado"))
-    .catch((error) => console.log("Erro na conexão com o banco de dados: " + error.message));
-
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos(10);

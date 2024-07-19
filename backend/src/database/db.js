@@ -2,22 +2,55 @@ import mongoose from 'mongoose';
 import game from '../models/game.js'
 
 async function connectDatabase() {
-    mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos");
+    await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos").then(() => console.log("Banco de dados conectado"))
+    .catch((error) => console.log("Erro na conexão com o banco de dados: " + error.message));
 }
 
 async function ListarJogos(limite = null) {
-    if (limite == null) {
-        return await game.find();
-    } 
-    return await game.find().limit(limite);
+    try {
+        await connectDatabase();
+
+        if (limite == null) {
+            return await game.find();
+        } 
+        return await game.find().limit(limite);
+    } catch (error) {
+        console.log("Erro ao listar jogos: " + error.message);
+        return [];
+    } finally {
+        mongoose.disconnect();
+    }
 }
 
 async function BuscarJogos(nome) {
-    return await game.find({Game: new RegExp(nome, 'i')});
+    try {
+        await connectDatabase();
+
+        return await game.find({Game: new RegExp(nome, 'i')});
+    } catch (error) {
+        console.log("Erro ao buscar jogos: " + error.message);
+        return [];
+    } finally {
+        mongoose.disconnect();
+    }
+
+    
 }
 
 async function BuscarGenero(genero) {
-    return await game.find({"Genre(s)": new RegExp(genero, 'i')});
+    try {
+        await connectDatabase();
+
+        // Irá converter a entrada para TitleCase: "action" -> "Action"
+        let generoCerto = genero.charAt(0).toUpperCase() + genero.slice(1).toLowerCase();
+
+        return await game.find({"Genre(s)": generoCerto });
+    } catch (error) {
+        console.log("Erro ao buscar jogos: " + error.message);
+        return [];
+    } finally {
+        mongoose.disconnect();
+    }
 }
 
 async function BuscarImagemJogo(nome) {
@@ -69,4 +102,4 @@ async function traduzirGenero() {
 // traduzirGenero(); - tire esse comentário para mudar as ocorrências - CUIDADO
 // node src/database/db.js
 
-export {connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};
+export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};
