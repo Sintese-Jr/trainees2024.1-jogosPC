@@ -41,4 +41,32 @@ async function BuscarImagemJogo(nome) {
     });
 }
 
+// Script para modificar diretamente o banco, não será levado para a API
+async function traduzirGenero() {
+    try {
+        await connectDatabase(); // conexão com o banco de dados
+        const genero = 'Action'; 
+
+        const jogosDesseGenero = await game.find({ 'Genre(s)': genero });
+
+        // Atualizar cada jogo
+        for (let jogoDoGenero of jogosDesseGenero) {
+            let generoDoJogo = jogoDoGenero['Genre(s)'];
+
+            const generoAtualizado = generoDoJogo.replace(genero, 'Ação');
+
+            await game.updateOne({ _id: jogoDoGenero._id }, { $set: { 'Genre(s)': generoAtualizado } });
+        }
+
+        console.log("modificações: " + jogosDesseGenero.length);
+    } catch (error) {
+        console.error('Error ao tentar mudar as ocorrências:', error);
+    } finally {
+        mongoose.disconnect();
+    }
+}
+
+// traduzirGenero(); - tire esse comentário para mudar as ocorrências - CUIDADO
+// node src/database/db.js
+
 export {connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};
