@@ -16,6 +16,10 @@ async function BuscarJogos(nome) {
     return await game.find({Game: new RegExp(nome, 'i')});
 }
 
+async function BuscarGenero(genero) {
+    return await game.find({"Genre(s)": new RegExp(genero, 'i')});
+}
+
 async function BuscarImagemJogo(nome) {
     return fetch(`https://api.rawg.io/api/games?key=ac9af96231f64ff09afe969f2e97c770&search=${nome}`)
     .then(response => response.json())
@@ -37,4 +41,4 @@ async function BuscarImagemJogo(nome) {
     });
 }
 
-export {connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo};
+export {connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};

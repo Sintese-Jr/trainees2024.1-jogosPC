@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo } from './src/database/db.js';
+import { connectDatabase, ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
 
 const app = express();
 app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
@@ -39,6 +39,12 @@ app.get("/:nome", async(req, res) => {
 
     res.json(jogosPesquisados);
 });
+
+app.get("/genero/:genero", async(req, res) => {
+    const generosPesquisados = await BuscarGenero(req.params.genero);
+
+    res.json(generosPesquisados);
+})
 
 app.listen(PORT, () => {
     console.log(`> Servidor de Jogos iniciado na porta ${PORT}`);
