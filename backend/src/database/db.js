@@ -2,8 +2,12 @@ import mongoose from 'mongoose';
 import game from '../models/game.js'
 
 async function connectDatabase() {
-    await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos").then(() => console.log("Banco de dados conectado"))
-    .catch((error) => console.log("Erro na conexão com o banco de dados: " + error.message));
+    try {
+        await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos")
+    } catch (error) {
+        console.log("Erro na conexão com o banco de dados: " + error.message);
+        exit(-1);
+    } 
 }
 
 async function ListarJogos(limite = null) {

@@ -32,6 +32,8 @@ app.get("/imagem/:nome", async(req, res) => {
 app.get("/:nome", async(req, res) => {
     const jogosPesquisados = await BuscarJogos(req.params.nome); 
 
+    console.log(jogosPesquisados);
+
     res.json(jogosPesquisados);
 });
 
