@@ -6,7 +6,7 @@ async function connectDatabase() {
         await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos")
     } catch (error) {
         console.log("Erro na conexão com o banco de dados: " + error.message);
-        exit(-1);
+        return { error: error.message } 
     } 
 }
 
@@ -37,18 +37,13 @@ async function BuscarJogos(nome) {
     } finally {
         mongoose.disconnect();
     }
-
-    
 }
 
 async function BuscarGenero(genero) {
     try {
         await connectDatabase();
 
-        // Irá converter a entrada para TitleCase: "action" -> "Action"
-        let generoCerto = genero.charAt(0).toUpperCase() + genero.slice(1).toLowerCase();
-
-        return await game.find({"Genre(s)": generoCerto });
+        return await game.find({"Genre(s)": genero });
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
@@ -77,33 +72,5 @@ async function BuscarImagemJogo(nome) {
         return ""; 
     });
 }
-
-// Script para modificar diretamente o banco, não será levado para a API
-async function traduzirGenero() {
-    try {
-        await connectDatabase(); // conexão com o banco de dados
-        const genero = 'Action'; 
-
-        const jogosDesseGenero = await game.find({ 'Genre(s)': genero });
-
-        // Atualizar cada jogo
-        for (let jogoDoGenero of jogosDesseGenero) {
-            let generoDoJogo = jogoDoGenero['Genre(s)'];
-
-            const generoAtualizado = generoDoJogo.replace(genero, 'Ação');
-
-            await game.updateOne({ _id: jogoDoGenero._id }, { $set: { 'Genre(s)': generoAtualizado } });
-        }
-
-        console.log("modificações: " + jogosDesseGenero.length);
-    } catch (error) {
-        console.error('Error ao tentar mudar as ocorrências:', error);
-    } finally {
-        mongoose.disconnect();
-    }
-}
-
-// traduzirGenero(); - tire esse comentário para mudar as ocorrências - CUIDADO
-// node src/database/db.js
 
 export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};
