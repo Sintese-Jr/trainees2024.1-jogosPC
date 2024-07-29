@@ -1,0 +1,30 @@
+@font-face {
+    font-family:"Determination Sans Web Regular";
+    src:url("./assets/fonts/determinationsansweb-webfont.ttf");
+    font-weight:normal;
+    font-style:normal;
+}
+
+
+html{
+    --primary1: #F7C22F;
+    --primary2: #FFE978;
+    --primary3: #C09D37;
+    --primary4: #F8EAC64D;
+
+    --secondary1: #682E93;
+    --secondary2: #884FB2;
+    --secondary3: #3F1E55;
+    --secondary4: #281933;
+    --secondary5: #682E9333;
+}
+
+body{
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow-x: hidden;
+}
+
+.catalogo{
+    color: #fff;
+}

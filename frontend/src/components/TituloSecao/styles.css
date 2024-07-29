@@ -1,0 +1,10 @@
+.tituloSecao{
+    width: 100vw;
+    height: auto;
+    background-color: var(--primary1);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Determination Sans Web Regular";
+}

@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Determination Sans Web Regular";
+    position: relative;
+}
+
+
+
+.teste{
+
+    
+}
+
+.titulo{
+
+    position: absolute;
+}
