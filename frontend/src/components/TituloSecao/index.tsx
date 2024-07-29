@@ -8,7 +8,7 @@ interface TituloSecaoProps {
 export default function TituloSecao(props: TituloSecaoProps) {
     return (
         <div className='tituloSecao'>
-            <h2>{props.titulo}</h2>
+            <h1 className='titulo'>{props.titulo}</h1>
         </div>
     )
 }

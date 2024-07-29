@@ -16,9 +16,16 @@ interface CardJogosProps {
 
 export default function CardJogos(props: CardJogosProps) {
     return (
-        <div >
+        <div className="fundo-card">
+            <div className="ranking-card">
 
+            </div>
+            <div className="imagem-card">
 
+            </div>
+            <div className="nome-card">
+
+            </div>
         </div>
     )
 }

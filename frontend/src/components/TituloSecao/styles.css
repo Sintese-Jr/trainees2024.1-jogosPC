@@ -1,10 +1,17 @@
-.tituloSecao{
-    width: 100vw;
-    height: auto;
+.tituloSecao {
+    width: 40%;
+    height: 5rem;
     background-color: var(--primary1);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Determination Sans Web Regular";
+    margin: 0 auto;
+    clip-path: polygon(0% 100%, 10% 0%, 100% 0%, 90% 100%);
+}
+
+.titulo{
+    font-weight: 400;
+    text-shadow: 4px 4px 0px #361B48;
 }

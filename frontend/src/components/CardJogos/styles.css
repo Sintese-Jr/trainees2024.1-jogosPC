@@ -1,0 +1,10 @@
+.fundo-card{
+    height: 265px;
+    width: 264px;
+    background-color: var(--white3);
+    border: 1px solid var(--primary4);
+    opacity: 0.3;
+    border-radius: 12px;
+    /* filter: blur(1px); */
+}
+
