@@ -15,9 +15,9 @@ async function ListarJogos(limite = null) {
         await connectDatabase();
 
         if (limite == null) {
-            return await game.find();
+            return await game.find({}, { _id: 0, __v: 0 });
         } 
-        return await game.find().limit(limite);
+        return await game.find({}, { _id: 0, __v: 0 }).limit(limite);
     } catch (error) {
         console.log("Erro ao listar jogos: " + error.message);
         return [];
@@ -30,7 +30,7 @@ async function BuscarJogos(nome) {
     try {
         await connectDatabase();
 
-        return await game.find({Game: new RegExp(nome, 'i')});
+        return await game.find({game: new RegExp(nome, 'i')}, { _id: 0, __v: 0 });
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
@@ -43,7 +43,7 @@ async function BuscarGenero(genero) {
     try {
         await connectDatabase();
 
-        return await game.find({"Genre(s)": genero });
+        return await game.find({genre: genero }, { _id: 0, __v: 0 });
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];

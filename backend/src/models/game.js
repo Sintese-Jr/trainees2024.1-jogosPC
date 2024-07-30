@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
 const gameSchema = new mongoose.Schema({
-    'Game': String,
-    'Total copies sold': String,
-    'Series': String,
-    'Release date': String,
-    'Genre(s)': String,
-    'Developer(s)': String,
-    'Publisher(s)': String,
+    'game': String,
+    'total_copies_sold': String,
+    'serie': String,
+    'release_date': String,
+    'genre': String,
+    'developer': String,
+    'publisher': String,
+    'id': Number,
 
 }, {collection: 'Jogos'})
 
