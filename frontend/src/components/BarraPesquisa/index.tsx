@@ -1,21 +1,19 @@
-import React from 'react'
+import React from 'react';
 import './styles.css'
 
-interface BarraPesquisa {
-    titulo: string
+interface BarraPesquisaProps {
+    setPesquisa: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function BarraPesquisa(props: BarraPesquisa) {
+export default function BarraPesquisa(props: BarraPesquisaProps) {
     return (
-        <div className='container'>
-
-            <div className='teste'>
-                <img src="frontend/src/assets/images/barra-pesquisa.png"/>
-            <h2 className='titulo'>Barra de pesquisa</h2>
-            </div>
-
-            
+        <div className='container-pesquisa'>
+            <input
+                type="search"
+                placeholder='Pesquisar'
+                className='barra-pesquisa'
+                onChange={props.setPesquisa}
+            />
         </div>
     )
 }
-    

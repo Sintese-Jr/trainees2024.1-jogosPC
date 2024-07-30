@@ -1,12 +1,10 @@
 .secao-catalogo{
     display:flex;
     justify-content: center;
-    gap: 50px;
+    column-gap: 50px;
     flex-wrap: wrap;
     margin-left: 50px;
-    margin-top: 50px;
     width: 90vw;
-    height: 1012px;
     border-bottom: 4px solid var(--primary1);
     border-radius: 4px;
 }

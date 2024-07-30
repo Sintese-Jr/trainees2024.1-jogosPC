@@ -1,0 +1,18 @@
+.colocacao{
+    margin-bottom: 0px;
+    z-index: 1000;
+    position: absolute;
+}
+
+.imagem{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.text-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+}

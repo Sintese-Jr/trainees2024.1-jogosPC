@@ -1,10 +1,35 @@
 .fundo-card{
-    height: 265px;
+    height: 100%;
     width: 264px;
-    background-color: var(--white3);
+    background-color: rgb(217,217,217, 0.3);
     border: 1px solid var(--primary4);
-    opacity: 0.3;
     border-radius: 12px;
+    margin-bottom: 50px;
     /* filter: blur(1px); */
 }
 
+.nome-card{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width:30%;
+}
+
+.grid-info {
+    display: grid;
+    row-gap: 10px;  
+    padding: 10px;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;  
+    align-items: center; 
+    gap: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.item-right {
+    justify-self: end;  
+}

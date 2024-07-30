@@ -9,8 +9,6 @@ export default function PaginaCatalogo(props: PaginaCatalogoProps) {
     return (
         <div className='pagina-catalogo'>
             {props.children}
-
-
         </div>
     )
 }

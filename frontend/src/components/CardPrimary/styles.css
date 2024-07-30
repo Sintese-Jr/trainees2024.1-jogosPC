@@ -1,0 +1,17 @@
+.card-primary{
+    background-color: #F7C22F;
+    color: #3F1E55;
+    font-family: "Determination Sans Web Regular";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 8px;
+    height: 3rem;
+    
+    border-radius: 8px;
+    height: 3rem;
+   
+   
+}
+

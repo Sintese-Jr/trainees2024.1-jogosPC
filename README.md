@@ -98,6 +98,8 @@ npm install
 ```
 Por fim, rode o arquivo “`app.js`”.
 
+Para rodar, basta utilizar o comando "`node app.js`"
+
 Se retornar a mensagem que o servidor de Jogos foi iniciada, significa que a API já está em 
 funcionamento na sua máquina na porta 3000 definida nesse arquivo.
 

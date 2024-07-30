@@ -10,7 +10,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
 const PORT = 3001; 
 
 app.get('/', async (req, res) => {
-    const jogos = await ListarJogos(10);
+    const jogos = await ListarJogos();
 
     res.json(jogos)
 });
