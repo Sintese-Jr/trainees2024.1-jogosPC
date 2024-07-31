@@ -1,6 +1,7 @@
 .container-pesquisa{
     display: flex;
     justify-content: center;
+    offset: 5vw;
 }
 
 .barra-pesquisa {
@@ -11,7 +12,7 @@
     padding: 8px;
     font-size: 28px;
     background-color: rgb(136, 79, 178, 0.2); 
-    border: 1px solid var(--primary1);
+    border: 1px solid var(--primary1);                                                                          
     font-family: "Determination Sans Web Regular";
     color: var(--white1);
     margin-bottom: 50px;

@@ -1,8 +1,6 @@
 @font-face {
     font-family:"Determination Sans Web Regular";
-    src:url("./assets/fonts/determinationsansweb-webfont.ttf") format('truetype');
-    font-weight:normal;
-    font-style:normal;
+    src:url("./assets/fonts/determinationsansweb-webfont.ttf");
 }
 
 html{
@@ -35,46 +33,54 @@ h1{
     font-family: "Determination Sans Web Regular";
     font-size: 72px;
     line-height: 44px;
+    font-weight: 400px;
 }
 
 h2{
     font-family: "Determination Sans Web Regular";
     font-size: 64px;
     line-height: 40px;
+    font-weight: 400px;
 }
 
 h3{
     font-family: "Determination Sans Web Regular";
     font-size: 40px;
     line-height: 36px;
+    font-weight: 400px;
 }
 
 h4{
     font-family: "Determination Sans Web Regular";
     font-size: 28px;
     line-height: 32px;
+    font-weight: 400px;
 }
 
 h5{
     font-family: "Determination Sans Web Regular";
     font-size: 24px;
     line-height: 28px;
+    font-weight: 400px ;
 }
 
 h6{
     font-family: "Determination Sans Web Regular";
     font-size: 20px;
     line-height: 22px;
+    font-weight: 400px;
 }
 
 sub{
     font-family: "Determination Sans Web Regular";
     font-size: 16px;
     line-height: 20px;
+    font-weight: 400px;
 }
 
 caption{
     font-family: "Determination Sans Web Regular";
     font-size: 12px;
     line-height: 20px;
+    font-weight: 400px;
 }

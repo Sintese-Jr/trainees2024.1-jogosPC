@@ -1,5 +1,5 @@
 import React from 'react'
-import CardSecondary from '../CardSecondary/index.tsx';
+import CardPrimary from '../CardPrimary/index.tsx';
 import './styles.css'
 
 interface CardImgProps {
@@ -12,13 +12,15 @@ export default function CardImg(props: CardImgProps) {
     return (
         <div className='card-img'>
             <div className='colocacao'>
-                <CardSecondary texto={props.ranking.toString()} size='h5' border />
+
+                <CardPrimary texto={`${props.ranking.toString()}º`} size='h6' border variant='purple' />
             </div>
             <div className='imagem'>
+                {/* <img src={`${props.imagem}`} className='imagem' /> */}
                 <img src="https://t2.tudocdn.net/605594?w=1920" className='imagem' />
             </div>
             <div className='text-img'>
-                <CardSecondary texto={props.nome} size='h6' />
+                <CardPrimary texto={props.nome} size='h6' variant='purple' />
             </div>
         </div>
     )

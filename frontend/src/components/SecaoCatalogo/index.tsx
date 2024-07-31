@@ -9,7 +9,6 @@ export default function SecaoCatalogo(props: SecaoCatalogoProps) {
     return (
         <div className="secao-catalogo">
             {props.children}
-
         </div>
     )
 }

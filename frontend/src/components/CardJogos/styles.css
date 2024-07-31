@@ -5,6 +5,7 @@
     border: 1px solid var(--primary4);
     border-radius: 12px;
     margin-bottom: 50px;
+    padding: 20px;
     /* filter: blur(1px); */
 }
 
@@ -32,4 +33,14 @@
 
 .item-right {
     justify-self: end;  
+}
+
+.flex-info{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:10px;
+padding-top: 10px;
+
+
 }
