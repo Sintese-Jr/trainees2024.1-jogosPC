@@ -1,6 +1,6 @@
 {
-  "short_name": "React",
-  "name": "TESTE",
+  "short_name": "Catalogo de jogos",
+  "name": "Catalogo de jogos",
   "icons": [
     {
       "src": "favicon.ico",
