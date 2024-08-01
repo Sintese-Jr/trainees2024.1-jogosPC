@@ -26,6 +26,37 @@ async function ListarJogos(limite = null) {
     }
 }
 
+async function BuscarPag(numPag){
+    try{
+        await connectDatabase();
+
+        numPag = parseInt(numPag, 10) || 1;
+        var tamanhoPag = 15;
+
+        const jogos = await game.aggregate([
+            {
+                $facet: {
+                    metadata: [{ $count: 'quantidadeTotal' }],
+                    data: [{ $skip: (numPag - 1) * tamanhoPag }, {$limit: tamanhoPag }],
+                }
+            }
+        ]);
+
+        return {
+            jogos: {
+                metadata: { quantidadeTotal: jogos[0].metadata[0].quantidadeTotal, numPag, tamanhoPag },
+                data: jogos[0].data
+            }
+        }
+
+    } catch (error) {
+        console.log("Erro ao buscar por página: " + error.message);
+        return[];
+    } finally {
+        mongoose.disconnect();
+    }
+}
+
 async function BuscarJogos(nome) {
     try {
         await connectDatabase();
@@ -73,4 +104,4 @@ async function BuscarImagemJogo(nome) {
     });
 }
 
-export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero};
+export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero, BuscarPag};

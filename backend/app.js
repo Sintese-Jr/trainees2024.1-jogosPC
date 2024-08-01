@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
+import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero, BuscarPag } from './src/database/db.js';
 import convertGameToResponseGame from './src/models/responseGame.js';
 
 const app = express();
@@ -8,7 +8,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
 /*
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
-const PORT = 3001; 
+const PORT = 3002; 
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
@@ -19,6 +19,12 @@ app.get('/', async (req, res) => {
 
     res.json(updatedJogos);
 });
+
+
+app.get("/pag/:numPag", async(req, res) => {
+    const jogosPag = await BuscarPag(req.params.numPag);
+    res.json(jogosPag);
+})
 
 app.get("/imagem/:nome", async(req, res) => {
     const jogosPesquisados = await BuscarJogos(req.params.nome);
