@@ -9,7 +9,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
 /*
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
-const PORT = 3002; 
+const PORT = 3001; 
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
