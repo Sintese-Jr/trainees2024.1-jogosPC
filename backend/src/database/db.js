@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import game from '../models/game.js'
+import { convertCopiesSoldToNumbers } from '../models/data_format.js';
 
 async function connectDatabase() {
     try {
@@ -14,10 +15,16 @@ async function ListarJogos(limite = null) {
     try {
         await connectDatabase();
 
-        if (limite == null) {
-            return await game.find({}, { _id: 0, __v: 0 });
-        } 
-        return await game.find({}, { _id: 0, __v: 0 }).limit(limite);
+        const games =  await game.find({}, { _id: 0, __v: 0 }).limit(limite);
+
+        /*
+        Deus abençoe o JavaScript
+
+        sort() é um método que ordena um array de acordo com uma função de comparação. Nesse caso, eu tenho a versão NUMÉRICA do total copies sold de cada jogo, tiro a diferença entre eles e ordeno de forma decrescente.
+        */
+        games.sort((before, after) => convertCopiesSoldToNumbers(after.total_copies_sold) - convertCopiesSoldToNumbers(before.total_copies_sold));
+
+        return games;
     } catch (error) {
         console.log("Erro ao listar jogos: " + error.message);
         return [];

@@ -1,4 +1,4 @@
-import convertStringToArray from "./data_format.js";
+import {convertStringToArray} from "./data_format.js";
 
 export default function convertGameToResponseGame(my_game) {
     // Converterá um objeto estático retirado do banco de dados em um 
