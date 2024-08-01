@@ -11,7 +11,11 @@ const gameSchema = new mongoose.Schema({
     'developer': String,
     'publisher': String,
     'id': Number,
-
+    'imagem': String, 
+    'ranking': {
+        type: Number,
+        default: 0 // or any default value you prefer
+    }
 }, {collection: 'Jogos'})
 
 
