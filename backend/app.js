@@ -1,18 +1,25 @@
 import express from 'express';
 import cors from 'cors';
 import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
+import convertStringToArray from './src/models/data_format.js';
+import convertGameToResponseGame from './src/models/responseGame.js';
 
 const app = express();
 app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
 /*
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
-const PORT = 3001; 
+const PORT = 3002; 
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
 
-    res.json(jogos)
+    // Tornar Genre de um string para um array de strings
+    const updatedJogos = jogos.map(jogo => {
+        return convertGameToResponseGame(jogo);
+    });
+
+    res.json(updatedJogos);
 });
 
 app.get("/imagem/:nome", async(req, res) => {
