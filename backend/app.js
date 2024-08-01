@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
+import convertStringToArray from './src/models/data_format.js';
+import convertGameToResponseGame from './src/models/responseGame.js';
 
 const app = express();
 app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
@@ -12,7 +14,11 @@ const PORT = 3001;
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
 
-    res.json(jogos)
+    const updatedJogos = jogos.map(jogo => {
+        return convertGameToResponseGame(jogo);
+    });
+
+    res.json(updatedJogos);
 });
 
 app.get("/imagem/:nome", async(req, res) => {
