@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero } from './src/database/db.js';
-import convertStringToArray from './src/models/data_format.js';
 import convertGameToResponseGame from './src/models/responseGame.js';
 
 const app = express();
