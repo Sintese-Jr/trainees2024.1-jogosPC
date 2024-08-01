@@ -8,14 +8,70 @@ import NavegacaoPaginas from './components/NavegacaoPaginas/index.tsx';
 import { JogosType } from './types/jogos.tsx';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import axios from 'axios';
+import { Button, Modal, Box, Typography } from '@mui/material';
+
 //import { ArrowDownOutlined } from '@ant-design/icons';
+const fetchJogos = async () => {
+  try {
+    const response = await axios.get("http://localhost:3001");
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar jogos:", error);
+    return [];
+  }
+};
+
+// const fetchImagem = async (game) => {
+//   try {
+//     const response = await axios.get(`http://localhost:3001/imagem/${game}`);
+//     return response.data.imagem;
+//   } catch (error) {
+//     console.error(`Erro ao buscar imagem para o jogo ${game}:`, error);
+//     return null;
+//   }
+// };
+
+// const fetchJogosComImagens = async (jogos) => {
+//   return Promise.all(
+//     jogos.map(async (jogo) => {
+//       const imagem = await fetchImagem(jogo.game);
+//       return { ...jogo, imagem };
+//     })
+//   );
+// };
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'transparent',
+  border: 'none',
+  boxShadow: 'none',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  outline: 'none',
+};
 
 function App() {
   const [jogos, setJogos] = useState<JogosType[] | null>(null);
+  const [cardSelected, setCardSelected] = useState<number | null>(null);
   const [listaAtual, setListaAtual] = useState<JogosType[] | null>(null);
   const [valorDaBusca, setValorDaBusca] = useState<string>();
   const [paginaAtual, setPaginaAtual] = useState<number>(1);
   const [totalPaginas, setTotalPaginas] = useState<number>(100);
+  const [open, setOpen] = React.useState(false);
+  const handleModal = () => setOpen(!open);
+
+  function handleCardSelected(id: number) {
+    setCardSelected(id);
+    if (!open) {
+      handleModal();
+    }
+  }
 
   function handleSetValorDaBusca(event: React.ChangeEvent<HTMLInputElement>) {
     setValorDaBusca(event.target.value)
@@ -47,32 +103,26 @@ function App() {
     setPaginaAtual(Number(event.target.value))
   }
 
-  useEffect(() => {
-    console.log(valorDaBusca)
-  }, [valorDaBusca])
+  // useEffect(() => {
+  //   console.log(valorDaBusca)
+  // }, [valorDaBusca])
 
   useEffect(() => {
     console.log(jogos)
   }, [jogos]);
 
-  useEffect(() => {
-    console.log(paginaAtual)
-  }, [paginaAtual])
+  // useEffect(() => {
+  //   console.log(paginaAtual)
+  // }, [paginaAtual])
+
 
   useEffect(() => {
-    fetch("http://localhost:3001")
-      .then(response => response.json())
-      .then(data => {
-        setJogos(data);
-      });
-    // .then(async data => {
-    //   // Supondo que cada jogo tem um id e que a URL para a imagem é algo como `http://localhost:3001/imagem/{id}`
-    //   const jogosComImagens = await Promise.all(data.map(async (jogo: JogosType) => {
-    //     const imagemResponse = await fetch(`http://localhost:3001/imagem/${jogo.game}`);
-    //     return { ...jogo, imagem: imagemResponse.url };
-    //   }));
-    //   setJogos(jogosComImagens);
-    // });
+    const getJogosComImagens = async () => {
+      const jogosData = await fetchJogos();
+      // const jogosComImagens = await fetchJogosComImagens(jogosData);
+      setJogos(jogosData);
+    };
+    getJogosComImagens();
   }, []);
 
   return (
@@ -80,7 +130,6 @@ function App() {
       <PaginaCatalogo>
         <TituloSecao titulo="RANKING GERAL" />
         <BarraPesquisa setPesquisa={handleSetValorDaBusca} />
-
 
         <SecaoCatalogo>
           {
@@ -91,22 +140,52 @@ function App() {
                   id={jogo_atual.id}
                   imagem={jogo_atual.imagem}
                   nome={jogo_atual.game}
-                  empresa={jogo_atual.developer}
                   desenvolvedora={jogo_atual.developer}
                   lancamento={jogo_atual.release_date}
                   publisher={jogo_atual.publisher}
                   genero={jogo_atual.genre}
                   ranking={index + 1}
                   total_vendas={jogo_atual.total_copies_sold}
+                  handleOpenCard={handleCardSelected}
+                  cardOpen={false}
                 />
               )
             })
           }
+
+          <Modal
+            open={open}
+            onClose={handleModal}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              {
+                jogos?.filter((jogo) => jogo.id === cardSelected).map((jogo) => {
+                  return (
+                    CardJogos({
+                      id: jogo.id,
+                      imagem: jogo.imagem,
+                      nome: jogo.game,
+                      desenvolvedora: jogo.developer,
+                      lancamento: jogo.release_date,
+                      publisher: jogo.publisher,
+                      genero: jogo.genre,
+                      ranking: 1,
+                      total_vendas: jogo.total_copies_sold,
+                      handleOpenCard: handleCardSelected,
+                      cardOpen: open
+                    })
+                  )
+                })
+              }
+            </Box>
+          </Modal>
         </SecaoCatalogo>
 
         <NavegacaoPaginas paginaAtual={paginaAtual} totalPaginas={totalPaginas} setPagina={handleSetPaginaAtual} />
       </PaginaCatalogo>
-    </div>
+    </div >
   );
 }
 

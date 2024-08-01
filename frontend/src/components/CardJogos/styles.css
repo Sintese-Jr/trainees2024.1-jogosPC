@@ -1,12 +1,18 @@
-.fundo-card{
+.fundo-card-open, .fundo-card-close{
     height: 100%;
     width: 264px;
     background-color: rgb(217,217,217, 0.3);
     border: 1px solid var(--primary4);
     border-radius: 12px;
-    margin-bottom: 50px;
     padding: 20px;
+    transform: scale(0.9);
+    transition: 0.4s;
     /* filter: blur(1px); */
+}
+
+.fundo-card-open{
+    background-color: 
+    #545454;
 }
 
 .nome-card{
@@ -36,11 +42,29 @@
 }
 
 .flex-info{
-display: flex;
-flex-direction: column;
-align-items: center;
-gap:10px;
-padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    padding-top: 10px;
+}
 
+.info-list{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    flex-direction: row;
+    display: flex;
+    border-radius: 4px;
+    border: 2px dashed var(--Primria-4, rgba(248, 234, 198, 0.30)); /* borda pontilhada*/ 
+    flex-wrap: wrap;
+   
+    
+}
 
+.fundo-card-close:hover {
+    transform: scale(1.0);
+    transition: 0.4s;
+    cursor: pointer;
 }

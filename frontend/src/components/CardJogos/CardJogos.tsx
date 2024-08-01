@@ -2,35 +2,72 @@ import React from "react";
 import './styles.css';
 import CardPrimary from "../CardPrimary/index.tsx";
 import CardImg from "../CardImg/index.tsx";
+import SetasCard from "../SetasCard/index.tsx"
 
 interface CardJogosProps {
-    id: string;
+    id: number;
     ranking: number;
     imagem: string;
     nome: string;
-    empresa: string;
     total_vendas: string;
-    desenvolvedora: string;
-    publisher: string;
-    genero: string
+    desenvolvedora: string[];
+    publisher: string[];
+    genero: string[]
     lancamento: string;
+    handleOpenCard?: (index: number) => void;
+    cardOpen: boolean;
 }
 
 export default function CardJogos(props: CardJogosProps) {
     return (
-        <div className="fundo-card">
+        <div className={`${props.cardOpen ? 'fundo-card-open' : 'fundo-card-close'}`} onClick={() => props.handleOpenCard && props.handleOpenCard(props.id)}>
             <CardImg imagem={`${props.imagem}`} ranking={props.ranking} nome={props.nome} />
-            <div className="flex-info">
-                <CardPrimary texto="TOTAL DE VENDAS" size="subtitle" variant="yellow" />
-                <CardPrimary texto={props.total_vendas} size="subtitle" variant="purple" />
-                <CardPrimary texto="DESENVOLVEDOR" size="subtitle" variant="yellow" />
-                <CardPrimary texto={props.desenvolvedora} size="subtitle" variant="purple" />
-                <CardPrimary texto="DISTRIBUIDOR" size="subtitle" variant="yellow" />
-                <CardPrimary texto={props.publisher} size="subtitle" variant="purple" />
-                <CardPrimary texto="GÊNEROS" size="subtitle" variant="yellow" />
-                <CardPrimary texto={props.genero} size="subtitle" variant="purple" />
-            </div >
+            {
+                props.cardOpen && (
+
+                    <div className="flex-info">
+                        <div className="flex-title">
+                            <SetasCard>
+                                <CardPrimary texto="TOTAL DE VENDAS" size="subtitle" variant="yellow" />
+                            </SetasCard>
+                        </div>
+                        <div className="info-list">
+                            <CardPrimary texto={props.total_vendas} size="subtitle" variant="purple" />
+                        </div>
+                        <SetasCard>
+                            <CardPrimary texto="DESENVOLVEDOR" size="subtitle" variant="yellow" />
+                        </SetasCard>
+                        <div className="info-list">
+                            {props.desenvolvedora.map((dev, index) => {
+                                return (
+                                    <CardPrimary texto={dev} size="subtitle" variant="purple" key={index} />
+                                )
+                            })}
+                        </div>
+                        <SetasCard>
+                            <CardPrimary texto="DISTRIBUIDOR" size="subtitle" variant="yellow" />
+                        </SetasCard>
+                        <div className="info-list">
+                            {props.publisher.map((pub, index) => {
+                                return (
+                                    <CardPrimary texto={pub} size="subtitle" variant="purple" key={index} />
+                                )
+                            })}
+                        </div>
+                        <SetasCard>
+                            <CardPrimary texto="GÊNEROS" size="subtitle" variant="yellow" />
+                        </SetasCard>
+                        <div className="info-list">
+                            {props.genero.map((gen, index) => {
+                                return (
+                                    <CardPrimary texto={gen} size="subtitle" variant="purple" key={index} />
+                                )
+                            })}
+                        </div>
+                    </div >
+                )}
         </div >
+
     )
 }
 
