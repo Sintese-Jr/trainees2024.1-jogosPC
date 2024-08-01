@@ -87,10 +87,10 @@ function App() {
             jogos?.map((jogo_atual, index) => {
               return (
                 <CardJogos
-                key={jogo_atual.id}
-                id={jogo_atual.id}
-                imagem={jogo_atual.imagem}
-                nome={jogo_atual.game}
+                  key={jogo_atual.id}
+                  id={jogo_atual.id}
+                  imagem={jogo_atual.imagem}
+                  nome={jogo_atual.game}
                   empresa={jogo_atual.developer}
                   desenvolvedora={jogo_atual.developer}
                   lancamento={jogo_atual.release_date}
@@ -98,13 +98,13 @@ function App() {
                   genero={jogo_atual.genre}
                   ranking={index + 1}
                   total_vendas={jogo_atual.total_copies_sold}
-                  />
-                )
-              })
-            }
+                />
+              )
+            })
+          }
         </SecaoCatalogo>
-      
-         <NavegacaoPaginas paginaAtual={paginaAtual} totalPaginas={totalPaginas} setPagina={handleSetPaginaAtual} />
+
+        <NavegacaoPaginas paginaAtual={paginaAtual} totalPaginas={totalPaginas} setPagina={handleSetPaginaAtual} />
       </PaginaCatalogo>
     </div>
   );
