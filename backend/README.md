@@ -122,7 +122,7 @@ Para acessar as diferentes funcionalidades, conecte-se nos respectivos endereço
       
 - Busca do jogo pelo gênero
     - Método de requisição HTTP: GET
-    - Endereço: “ http://localhost:3000/genero/nome_do_genero ”
+    - Endereço: “ http://localhost:3001/genero/nome_do_genero ”
     - obs: o nome_do_genero deve ser exatamente igual ao presente no banco de dados
 
 - Acessar o número de páginas disponíveis 
