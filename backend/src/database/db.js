@@ -31,13 +31,13 @@ async function BuscarPag(numPag){
         await connectDatabase();
 
         numPag = parseInt(numPag, 10) || 1;
-        var tamanhoPag = 15;
+        let tamanhoPag = 15;
 
         const jogos = await game.aggregate([
             {
                 $facet: {
                     metadata: [{ $count: 'quantidadeTotal' }],
-                    data: [{ $skip: (numPag - 1) * tamanhoPag }, {$limit: tamanhoPag }],
+                    data: [{ $skip: (numPag - 1) * tamanhoPag }, {$limit: tamanhoPag }, {$project: {_id: 0, __v: 0}}],
                 }
             }
         ]);

@@ -8,7 +8,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
 /*
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
-const PORT = 3002; 
+const PORT = 3001; 
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
@@ -22,8 +22,13 @@ app.get('/', async (req, res) => {
 
 
 app.get("/pag/:numPag", async(req, res) => {
-    const jogosPag = await BuscarPag(req.params.numPag);
-    res.json(jogosPag);
+    const jogosMetadata = await BuscarPag(req.params.numPag);
+
+    const updatedJogos = jogosMetadata.jogos.data.map(jogo => {
+        return convertGameToResponseGame(jogo);
+    });
+
+    res.json(updatedJogos);
 })
 
 app.get("/imagem/:nome", async(req, res) => {
