@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// Schema do Objeto estático que será retornado pelo banco de dados
+// NÃO MODIFICAR AQUI, ver em responseGame.js
 const gameSchema = new mongoose.Schema({
     'game': String,
     'total_copies_sold': String,

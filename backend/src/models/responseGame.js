@@ -1,7 +1,10 @@
 import convertStringToArray from "./data_format.js";
 
 export default function convertGameToResponseGame(my_game) {
+    // Converterá um objeto estático retirado do banco de dados em um 
+    // para podermos manipular. 
 
+    // se quiser alterar como uma informação é fornecido pelo db, é aqui 
     return {
             id: my_game.id,
             game: my_game.game,
