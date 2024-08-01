@@ -39,13 +39,21 @@ app.get("/:nome", async(req, res) => {
 
     console.log(jogosPesquisados);
 
-    res.json(jogosPesquisados);
+    const updatedJogos = jogosPesquisados.map(jogo => {
+        return convertGameToResponseGame(jogo);
+    });
+
+    res.json(updatedJogos);
 });
 
 app.get("/genero/:genero", async(req, res) => {
     const generosPesquisados = await BuscarGenero(req.params.genero);
 
-    res.json(generosPesquisados);
+    const updatedGeneros = generosPesquisados.map(jogo => {
+        return convertGameToResponseGame(jogo);
+    });
+
+    res.json(updatedGeneros);
 })
 
 app.listen(PORT, () => {
