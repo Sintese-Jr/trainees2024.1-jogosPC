@@ -30,8 +30,10 @@ async function BuscarPag(numPag){
     try{
         await connectDatabase();
 
+
         numPag = parseInt(numPag, 10) || 1;
-        let tamanhoPag = 15;
+        let tamanhoPag = 16;
+
 
         const jogos = await game.aggregate([
             {
@@ -41,13 +43,18 @@ async function BuscarPag(numPag){
                 }
             }
         ]);
+       
+        let totalCount = parseInt(jogos[0].metadata[0].quantidadeTotal, 10);
+        const totalpag = Math.ceil(totalCount/tamanhoPag);
+
 
         return {
             jogos: {
-                metadata: { quantidadeTotal: jogos[0].metadata[0].quantidadeTotal, numPag, tamanhoPag },
-                data: jogos[0].data
+                metadata: { quantidadeTotal: jogos[0].metadata[0].quantidadeTotal, numPag, tamanhoPag, totalpag },
+                data: jogos[0].data,
             }
         }
+
 
     } catch (error) {
         console.log("Erro ao buscar por página: " + error.message);
@@ -56,6 +63,7 @@ async function BuscarPag(numPag){
         mongoose.disconnect();
     }
 }
+
 
 async function BuscarJogos(nome) {
     try {

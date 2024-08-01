@@ -31,6 +31,17 @@ app.get("/pag/:numPag", async(req, res) => {
     res.json(updatedJogos);
 })
 
+
+app.get("/paginas", async(req, res) => {
+
+
+    const totalPaginas = await BuscarPag(req.params.numPag)
+
+
+    res.json(totalPaginas.jogos.metadata.totalpag);
+})
+
+
 app.get("/imagem/:nome", async(req, res) => {
     const jogosPesquisados = await BuscarJogos(req.params.nome);
 
