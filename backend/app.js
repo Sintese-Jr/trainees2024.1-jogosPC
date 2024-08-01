@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero, BuscarPag } from './src/database/db.js';
+import { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo } from './src/database/db.js';
 import convertGameToResponseGame from './src/models/responseGame.js';
 
 const app = express();
@@ -9,6 +9,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
 const PORT = 3001; 
+let tamanho_das_paginas = 15;
 
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
@@ -20,9 +21,14 @@ app.get('/', async (req, res) => {
     res.json(updatedJogos);
 });
 
+app.get("/pag", async(req, res) => {
+    const total = await quantitade_jogo();
+
+    res.json({pages: Math.ceil(total / tamanho_das_paginas)});
+}); 
 
 app.get("/pag/:numPag", async(req, res) => {
-    const jogosMetadata = await BuscarPag(req.params.numPag);
+    const jogosMetadata = await BuscarPag(req.params.numPag, tamanho_das_paginas);
 
     const updatedJogos = jogosMetadata.jogos.data.map(jogo => {
         return convertGameToResponseGame(jogo);
@@ -30,20 +36,6 @@ app.get("/pag/:numPag", async(req, res) => {
 
     res.json(updatedJogos);
 })
-
-app.get("/imagem/:nome", async(req, res) => {
-    const jogosPesquisados = await BuscarJogos(req.params.nome);
-
-    // Se o jogo buscado não estiver do banco, retornamos uma imagem vazia
-    if (jogosPesquisados.length == 0) {
-        res.json({imagem: ""});
-        return;
-    }
-    
-    const imagem = await BuscarImagemJogo(req.params.nome);
-
-    res.json({imagem: imagem});
-});
 
 app.get("/:nome", async(req, res) => {
     const jogosPesquisados = await BuscarJogos(req.params.nome); 
@@ -65,7 +57,8 @@ app.get("/genero/:genero", async(req, res) => {
     });
 
     res.json(updatedGeneros);
-})
+});
+
 
 app.listen(PORT, () => {
     console.log(`> Servidor de Jogos iniciado na porta ${PORT}`);

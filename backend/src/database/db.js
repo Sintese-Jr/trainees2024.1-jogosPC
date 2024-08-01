@@ -37,24 +37,23 @@ async function ListarJogos(limite = null) {
     }
 }
 
-async function BuscarPag(numPag){
+async function BuscarPag(numPag, tamanho_da_pagina){
     try{
         await connectDatabase();
 
         numPag = parseInt(numPag, 10) || 1;
-        let tamanhoPag = 15;
 
         const jogos = await game.find({}, { _id: 0, __v: 0 });
 
         const sortedData = jogos.sort(sortMyResults);
 
-        const paginatedData = sortedData.slice((numPag - 1) * tamanhoPag, numPag * tamanhoPag);
+        const paginatedData = sortedData.slice((numPag - 1) * tamanho_da_pagina, numPag * tamanho_da_pagina);
 
         const quantidadeTotal = jogos.length;
 
         return {
             jogos: {
-                metadata: { quantidadeTotal, numPag, tamanhoPag },
+                metadata: { quantidadeTotal, numPag, tamanho_da_pagina },
                 data: paginatedData
             }
         }
@@ -101,42 +100,17 @@ async function BuscarGenero(genero) {
     }
 }
 
-async function BuscarImagemJogo(nome) {
-    return fetch(`https://api.rawg.io/api/games?key=ac9af96231f64ff09afe969f2e97c770&search=${nome}`)
-    .then(response => response.json())
-    .then(data => {
-        // Se não encontramos o jogo, retornamos uma string vazia
-        if (data.count != 0) return data.results[0].background_image;
-        
-        /*
-        Repare que um jogo nessa API pode não estar na Coleção de Jogos que temos no banco de dados.
-        
-        Isso será tratado no servidor.
-        */
-
-        return ""; 
-    })
-    .catch(error => {
-        console.log("Erro ao buscar imagem do jogo: " + error.message);
-        return ""; 
-    });
-}
-
-async function attribuateRanking() {
+async function quantitade_jogo(){
     try {
         await connectDatabase();
 
-        const games =  await game.find({}, { _id: 0, __v: 0 });
-
-        games.sort(sortMyResults);
-
-        return games;
+        return  await game.countDocuments();
     } catch (error) {
-        console.log("Erro ao atribuir ranking: " + error.message);
-        return [];
+        console.log("Erro ao buscar jogos: " + error.message);
+        return 0;
     } finally {
         mongoose.disconnect();
     }
 }
 
-export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero, BuscarPag};
+export { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo};

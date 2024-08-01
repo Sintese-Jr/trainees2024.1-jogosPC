@@ -6,7 +6,7 @@ export default function convertGameToResponseGame(my_game) {
 
     // se quiser alterar como uma informação é fornecido pelo db, é aqui 
     return {
-            id: my_game.id,
+            id: my_game.ranking,
             game: my_game.game,
             serie: my_game.serie,
             developer: convertStringToArray(my_game.developer),
@@ -14,6 +14,7 @@ export default function convertGameToResponseGame(my_game) {
             release_date: my_game.release_date,
             total_copies_sold: my_game.total_copies_sold,
             genre: convertStringToArray(my_game.genre),
+            background: my_game.imagem
         };
 
 }
