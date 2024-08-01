@@ -11,6 +11,10 @@ async function connectDatabase() {
     } 
 }
 
+function sortMyResults(a, b) {
+    return convertCopiesSoldToNumbers(b.total_copies_sold) - convertCopiesSoldToNumbers(a.total_copies_sold);
+}
+
 async function ListarJogos(limite = null) {
     try {
         await connectDatabase();
@@ -22,7 +26,7 @@ async function ListarJogos(limite = null) {
 
         sort() é um método que ordena um array de acordo com uma função de comparação. Nesse caso, eu tenho a versão NUMÉRICA do total copies sold de cada jogo, tiro a diferença entre eles e ordeno de forma decrescente.
         */
-        games.sort((before, after) => convertCopiesSoldToNumbers(after.total_copies_sold) - convertCopiesSoldToNumbers(before.total_copies_sold));
+        games.sort(sortMyResults);
 
         return games;
     } catch (error) {
@@ -40,19 +44,18 @@ async function BuscarPag(numPag){
         numPag = parseInt(numPag, 10) || 1;
         let tamanhoPag = 15;
 
-        const jogos = await game.aggregate([
-            {
-                $facet: {
-                    metadata: [{ $count: 'quantidadeTotal' }],
-                    data: [{ $skip: (numPag - 1) * tamanhoPag }, {$limit: tamanhoPag }, {$project: {_id: 0, __v: 0}}],
-                }
-            }
-        ]);
+        const jogos = await game.find({}, { _id: 0, __v: 0 });
+
+        const sortedData = jogos.sort(sortMyResults);
+
+        const paginatedData = sortedData.slice((numPag - 1) * tamanhoPag, numPag * tamanhoPag);
+
+        const quantidadeTotal = jogos.length;
 
         return {
             jogos: {
-                metadata: { quantidadeTotal: jogos[0].metadata[0].quantidadeTotal, numPag, tamanhoPag },
-                data: jogos[0].data
+                metadata: { quantidadeTotal, numPag, tamanhoPag },
+                data: paginatedData
             }
         }
 
@@ -68,7 +71,11 @@ async function BuscarJogos(nome) {
     try {
         await connectDatabase();
 
-        return await game.find({game: new RegExp(nome, 'i')}, { _id: 0, __v: 0 });
+        const foundGames = await game.find({game: new RegExp(nome, 'i')}, { _id: 0, __v: 0 });
+
+        foundGames.sort(sortMyResults);
+
+        return foundGames;
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
@@ -81,7 +88,11 @@ async function BuscarGenero(genero) {
     try {
         await connectDatabase();
 
-        return await game.find({genre: genero }, { _id: 0, __v: 0 });
+        const genreGames = await game.find({genre: genero }, { _id: 0, __v: 0 });
+
+        genreGames.sort(sortMyResults);
+
+        return genreGames;
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
@@ -109,6 +120,23 @@ async function BuscarImagemJogo(nome) {
         console.log("Erro ao buscar imagem do jogo: " + error.message);
         return ""; 
     });
+}
+
+async function attribuateRanking() {
+    try {
+        await connectDatabase();
+
+        const games =  await game.find({}, { _id: 0, __v: 0 });
+
+        games.sort(sortMyResults);
+
+        return games;
+    } catch (error) {
+        console.log("Erro ao atribuir ranking: " + error.message);
+        return [];
+    } finally {
+        mongoose.disconnect();
+    }
 }
 
 export { ListarJogos, BuscarJogos, BuscarImagemJogo, BuscarGenero, BuscarPag};
