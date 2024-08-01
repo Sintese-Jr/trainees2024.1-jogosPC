@@ -14,7 +14,6 @@ const PORT = 3002;
 app.get('/', async (req, res) => {
     const jogos = await ListarJogos();
 
-    // Tornar Genre de um string para um array de strings
     const updatedJogos = jogos.map(jogo => {
         return convertGameToResponseGame(jogo);
     });
