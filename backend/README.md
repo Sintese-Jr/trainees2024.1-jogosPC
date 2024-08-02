@@ -114,22 +114,24 @@ Para acessar as diferentes funcionalidades, conecte-se nos respectivos endereço
 
 - Lista de todos os jogos presentes no banco de dados
     - Método de requisição HTTP: GET
-    - Endereço: “ http://localhost:3000 ”
+    - Endereço: “ http://localhost:3001 ”
       
 - Busca do jogo pelo nome
     - Método de requisição HTTP: GET
-    - Endereço: “ http://localhost:3000/nome_do_jogo ”
-      
-- Busca da imagem do jogo
-    - Método de requisição HTTP: GET
-    - Endereço: “ http://localhost:3000/imagem/nome_do_jogo ”
+    - Endereço: “ http://localhost:3001/nome_do_jogo ”
       
 - Busca do jogo pelo gênero
     - Método de requisição HTTP: GET
-    - Endereço: “ http://localhost:3000/genero/nome_do_genero ”
+    - Endereço: “ http://localhost:3001/genero/nome_do_genero ”
     - obs: o nome_do_genero deve ser exatamente igual ao presente no banco de dados
 
+- Acessar o número de páginas disponíveis 
+    - Método de requisição HTTP: GET
+    - Endereço: “ http://localhost:3001/pag ”
 
+- Acessar uma página de jogos
+    - Método de requisição HTTP: GET
+    - Endereço: “ http://localhost:3001/pag/{número} ”
 
 
 
