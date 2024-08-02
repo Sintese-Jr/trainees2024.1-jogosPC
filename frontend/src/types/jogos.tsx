@@ -1,6 +1,6 @@
 
 export type JogosType = {
-    imagem: string;
+    background: string;
     developer: string[];
     game: string;
     genre: string[];
