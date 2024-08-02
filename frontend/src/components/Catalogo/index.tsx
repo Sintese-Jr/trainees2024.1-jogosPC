@@ -1,6 +1,6 @@
 import { Modal, Box } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { JogosType } from "../../types/jogos";
+import { JogosType } from "../../types/jogos.tsx";
 import BarraPesquisa from "../BarraPesquisa/index.tsx";
 import CardJogos from "../CardJogos/CardJogos.tsx";
 import NavegacaoPaginas from "../NavegacaoPaginas/index.tsx";
@@ -8,6 +8,8 @@ import PaginaCatalogo from "../PaginaCatalogo/index.tsx";
 import SecaoCatalogo from "../SecaoCatalogo/index.tsx";
 import TituloSecao from "../TituloSecao/index.tsx";
 import api from "../../hooks/jogos.tsx";
+import { TailSpin } from 'react-loading-icons'
+import './styles.css';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -27,12 +29,18 @@ const style = {
 export default function Catalogo() {
     const [jogos, setJogos] = useState<JogosType[] | null>(null);
     const [cardSelected, setCardSelected] = useState<number | null>(null);
-    const [listaAtual, setListaAtual] = useState<JogosType[] | null>(null);
-    const [valorDaBusca, setValorDaBusca] = useState<string>();
+    const [valorDaBusca, setValorDaBusca] = useState<string | null>(null);
     const [paginaAtual, setPaginaAtual] = useState<number>(1);
-    const [totalPaginas, setTotalPaginas] = useState<number>(100);
+    const [totalPaginas, setTotalPaginas] = useState<number>(12);
+    const [navegationActive, setNavegationActive] = useState<boolean>(true);
+    const [erroBusca, setErroBusca] = useState<boolean>(false);
     const [open, setOpen] = React.useState(false);
     const handleModal = () => setOpen(!open);
+
+    const fetchGames = async () => {
+        const jogosData = await api.fetchGames(paginaAtual);
+        setJogos(jogosData);
+    };
 
     function handleCardSelected(id: number) {
         setCardSelected(id);
@@ -51,8 +59,8 @@ export default function Catalogo() {
                 setPaginaAtual(1);
                 return;
             }
-            if (event > 100) {
-                setPaginaAtual(100);
+            if (event > 12) {
+                setPaginaAtual(12);
                 return;
             }
             setPaginaAtual(event);
@@ -64,33 +72,50 @@ export default function Catalogo() {
             return
         }
 
-        if (Number(event.target.value) > 100) {
-            setPaginaAtual(100)
+        if (Number(event.target.value) > 12) {
+            setPaginaAtual(12)
             return
         }
         setPaginaAtual(Number(event.target.value))
     }
 
-    // useEffect(() => {
-    //   console.log(valorDaBusca)
-    // }, [valorDaBusca])
-
-    // useEffect(() => {
-    //     console.log(jogos)
-    // }, [jogos]);
-
-    // useEffect(() => {
-    //   console.log(paginaAtual)
-    // }, [paginaAtual])
-
+    useEffect(() => {
+        if (jogos === null ||
+            jogos === undefined ||
+            jogos.length === 0 ||
+            jogos.length === 0 && valorDaBusca !== null) {
+            setNavegationActive(true);
+            setTimeout(() => {
+                fetchGames();
+            }, 500);
+        }
+    }, [jogos])
 
     useEffect(() => {
-        // const fetchGames = async () => {
-        //     const jogosData = await api.fetchGames(1);
-        //     setJogos(jogosData);
-        // };
+        if (valorDaBusca === undefined || valorDaBusca === "" || valorDaBusca === null) {
+            setNavegationActive(true);
+            setErroBusca(false);
+            fetchGames();
+            return;
+        }
+        const fetchGamesBySearch = async () => {
+            const jogosData = await api.fetchGamesBySearch(valorDaBusca);
+            setJogos(jogosData);
+            if (jogosData.length === 0) {
+                setErroBusca(true);
+            }
+        };
+        setNavegationActive(false);
+        fetchGamesBySearch();
+        console.log(valorDaBusca);
+    }, [valorDaBusca]);
 
-        // fetchGames();
+    useEffect(() => {
+        fetchGames();
+    }, [paginaAtual]);
+
+    useEffect(() => {
+        fetchGames();
     }, []);
 
     return (
@@ -101,7 +126,7 @@ export default function Catalogo() {
 
                 <SecaoCatalogo>
                     {
-                        jogos?.map((jogo_atual, index) => {
+                        jogos && !erroBusca ? jogos?.map((jogo_atual, index) => {
                             return (
                                 <CardJogos
                                     key={jogo_atual.id}
@@ -112,13 +137,20 @@ export default function Catalogo() {
                                     lancamento={jogo_atual.release_date}
                                     publisher={jogo_atual.publisher}
                                     genero={jogo_atual.genre}
-                                    ranking={index + 1}
+                                    ranking={jogo_atual.id}
                                     total_vendas={jogo_atual.total_copies_sold}
                                     handleOpenCard={handleCardSelected}
                                     cardOpen={false}
                                 />
                             )
                         })
+                            :
+                            erroBusca ?
+                                <>
+                                    <h5 className="errorGame">Nenhum Jogo Encontrado :( </h5>
+                                </>
+                                :
+                                <TailSpin stroke="#F7C22F" className="loading" />
                     }
 
                     <Modal
@@ -126,10 +158,11 @@ export default function Catalogo() {
                         onClose={handleModal}
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
+                        className="modal"
                     >
-                        <Box sx={style}>
+                        <Box sx={style} >
                             {
-                                jogos?.filter((jogo) => jogo.id === cardSelected).map((jogo) => {
+                                jogos && jogos?.filter((jogo) => jogo.id === cardSelected).map((jogo) => {
                                     return (
                                         CardJogos({
                                             id: jogo.id,
@@ -150,7 +183,15 @@ export default function Catalogo() {
                         </Box>
                     </Modal>
                 </SecaoCatalogo>
-                <NavegacaoPaginas paginaAtual={paginaAtual} totalPaginas={totalPaginas} setPagina={handleSetPaginaAtual} />
+                {
+                    (navegationActive && !erroBusca) && (
+                        <NavegacaoPaginas
+                            paginaAtual={paginaAtual}
+                            totalPaginas={totalPaginas}
+                            setPagina={handleSetPaginaAtual}
+                        />
+                    )
+                }
             </PaginaCatalogo>
         </div >
     );

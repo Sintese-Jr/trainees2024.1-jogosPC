@@ -8,7 +8,7 @@ app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse 
 /*
  Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
 */
-const PORT = 3001; 
+const PORT = 3001;
 let tamanho_das_paginas = 15;
 
 app.get('/', async (req, res) => {
@@ -21,24 +21,24 @@ app.get('/', async (req, res) => {
     res.json(updatedJogos);
 });
 
-app.get("/pag", async(req, res) => {
+app.get("/pag", async (req, res) => {
     const total = await quantitade_jogo();
 
-    res.json({pages: Math.ceil(total / tamanho_das_paginas)});
-}); 
+    res.json({ pages: Math.ceil(total / tamanho_das_paginas) });
+});
 
-app.get("/pag/:numPag", async(req, res) => {
+app.get("/pag/:numPag", async (req, res) => {
     const jogosMetadata = await BuscarPag(req.params.numPag, tamanho_das_paginas);
 
-    const updatedJogos = jogosMetadata.jogos.data.map(jogo => {
+    const updatedJogos = await jogosMetadata.jogos?.data?.map(jogo => {
         return convertGameToResponseGame(jogo);
     });
 
     res.json(updatedJogos);
 })
 
-app.get("/:nome", async(req, res) => {
-    const jogosPesquisados = await BuscarJogos(req.params.nome); 
+app.get("/:nome", async (req, res) => {
+    const jogosPesquisados = await BuscarJogos(req.params.nome);
 
     console.log(jogosPesquisados);
 
@@ -49,7 +49,7 @@ app.get("/:nome", async(req, res) => {
     res.json(updatedJogos);
 });
 
-app.get("/genero/:genero", async(req, res) => {
+app.get("/genero/:genero", async (req, res) => {
     const generosPesquisados = await BuscarGenero(req.params.genero);
 
     const updatedGeneros = generosPesquisados.map(jogo => {

@@ -11,7 +11,6 @@ export const api = {
             return [];
         }
     },
-
     fetchGames: async (page: number): Promise<JogosType[]> => {
         try {
             const response = await axios.get(`http://localhost:3001/pag/${page}`);
@@ -21,10 +20,18 @@ export const api = {
             return [];
         }
     },
-
-    fetchNumberPags: async () => {
+    fetchTotalPags: async () => {
         try {
-            const response = await axios.get("http://localhost:3001/pag/");
+            const response = await axios.get("http://localhost:3001/pag");
+            return response.data.pages;
+        } catch (error) {
+            console.error("Erro ao buscar jogos:", error);
+            return [];
+        }
+    },
+    fetchGamesBySearch: async (search: string): Promise<JogosType[]> => {
+        try {
+            const response = await axios.get(`http://localhost:3001/${search}`);
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);
