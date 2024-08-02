@@ -22,24 +22,24 @@ const fetchJogos = async () => {
   }
 };
 
-// const fetchImagem = async (game) => {
-//   try {
-//     const response = await axios.get(`http://localhost:3001/imagem/${game}`);
-//     return response.data.imagem;
-//   } catch (error) {
-//     console.error(`Erro ao buscar imagem para o jogo ${game}:`, error);
-//     return null;
-//   }
-// };
+const fetchImagem = async (game) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/imagem/${game}`);
+    return response.data.imagem;
+  } catch (error) {
+    console.error(`Erro ao buscar imagem para o jogo ${game}:`, error);
+    return null;
+  }
+};
 
-// const fetchJogosComImagens = async (jogos) => {
-//   return Promise.all(
-//     jogos.map(async (jogo) => {
-//       const imagem = await fetchImagem(jogo.game);
-//       return { ...jogo, imagem };
-//     })
-//   );
-// };
+const fetchJogosComImagens = async (jogos) => {
+  return Promise.all(
+    jogos.map(async (jogo) => {
+      const imagem = await fetchImagem(jogo.game);
+      return { ...jogo, imagem };
+    })
+  );
+};
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -119,8 +119,8 @@ function App() {
   useEffect(() => {
     const getJogosComImagens = async () => {
       const jogosData = await fetchJogos();
-      // const jogosComImagens = await fetchJogosComImagens(jogosData);
-      setJogos(jogosData);
+      const jogosComImagens = await fetchJogosComImagens(jogosData);
+      setJogos(jogosComImagens);
     };
     getJogosComImagens();
   }, []);

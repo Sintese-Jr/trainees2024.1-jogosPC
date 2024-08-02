@@ -16,8 +16,8 @@ export default function CardImg(props: CardImgProps) {
             </div>
             <div className='imagem'>
                 <div className="box-imagem">
-                    {/* <img src={`${props.imagem}`} className='imagem' /> */}
-                    <img src="https://t2.tudocdn.net/605594?w=1920" className='imagem' />
+                    <img src={`${props.imagem}`} className='imagem' />
+                    {/* <img src="https://t2.tudocdn.net/605594?w=1920" className='imagem' /> */}
                 </div>
             </div>
             <div className='text-img'>
