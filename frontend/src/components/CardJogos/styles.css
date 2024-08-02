@@ -59,8 +59,18 @@
     border-radius: 4px;
     border: 2px dashed var(--Primria-4, rgba(248, 234, 198, 0.30)); /* borda pontilhada*/ 
     flex-wrap: wrap;
-   
-    
+}
+
+.info-list-date{
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    text-align: right;
+    display: flex;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    margin: 0px;
 }
 
 .fundo-card-close:hover {

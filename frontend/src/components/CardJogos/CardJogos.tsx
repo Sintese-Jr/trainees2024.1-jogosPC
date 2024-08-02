@@ -64,6 +64,9 @@ export default function CardJogos(props: CardJogosProps) {
                                 )
                             })}
                         </div>
+                        <div className="info-list-date">
+                            <CardPrimary texto={props.lancamento} size="h6" variant="date" />
+                        </div>
                     </div >
                 )}
         </div >
