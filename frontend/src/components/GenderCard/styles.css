@@ -1,0 +1,10 @@
+.gender-card {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--primary1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3;
+}
