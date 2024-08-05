@@ -1,16 +1,13 @@
-.pagina-catalogo{
-    margin: 0px;
-    padding: 0px;
-    width: 100vw;
-    
-    background-image: url('../../assets/images/catalogo.png');
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat;
-    position: absolute; 
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+.pagina-catalogo {
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  min-height: 1670px;
 
+  background-image: url("../../assets/images/catalogo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
-
-

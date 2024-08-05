@@ -119,7 +119,7 @@ export default function Catalogo() {
     }, []);
 
     return (
-        <div className="App">
+        <div className="App" id="catalogo">
             <PaginaCatalogo>
                 <TituloSecao titulo="RANKING GERAL" />
                 <BarraPesquisa setPesquisa={handleSetValorDaBusca} />
