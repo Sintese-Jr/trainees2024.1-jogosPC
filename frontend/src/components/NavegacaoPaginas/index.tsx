@@ -35,7 +35,7 @@ export default function NavegacaoPaginas(props: NavegacaoPaginasProps) {
             <MdKeyboardArrowRight
                 className={`${props.paginaAtual < props.totalPaginas ? "arrow-right-able" : "arrow-right-unable"}`}
                 color={`${props.paginaAtual < props.totalPaginas ? "#3F1E55" : "#682E93"}`}
-                onClick={() => props.setPagina((props.paginaAtual) + 1)}
+                onClick={() => props.paginaAtual < props.totalPaginas ? props.setPagina((props.paginaAtual) + 1) : () => { }}
             />
             <MdKeyboardDoubleArrowRight
                 className={`${props.paginaAtual < props.totalPaginas ? "double-arrow-right-able" : "double-arrow-right-unable"}`}

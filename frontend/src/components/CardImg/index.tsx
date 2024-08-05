@@ -12,12 +12,13 @@ export default function CardImg(props: CardImgProps) {
     return (
         <div className='card-img'>
             <div className='colocacao'>
-
                 <CardPrimary texto={`${props.ranking.toString()}º`} size='h6' border variant='purple' />
             </div>
             <div className='imagem'>
-                {/* <img src={`${props.imagem}`} className='imagem' /> */}
-                <img src="https://t2.tudocdn.net/605594?w=1920" className='imagem' />
+                <div className="box-imagem">
+                    <img src={`${props.imagem}`} className='imagem' />
+                    {/* <img src="https://t2.tudocdn.net/605594?w=1920" className='imagem' /> */}
+                </div>
             </div>
             <div className='text-img'>
                 <CardPrimary texto={props.nome} size='h6' variant='purple' />

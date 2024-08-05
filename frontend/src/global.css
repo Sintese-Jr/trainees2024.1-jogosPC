@@ -3,6 +3,10 @@
     src:url("./assets/fonts/determinationsansweb-webfont.ttf");
 }
 
+*{
+    scroll-behavior: smooth;
+} 
+
 html{
     --primary1: #F7C22F;
     --primary2: #FFE978;
@@ -21,6 +25,7 @@ html{
     --white3: #D9D9D9;
 
     --black: #313338;
+    
 }
 
 body{
@@ -68,7 +73,7 @@ h6{
     font-family: "Determination Sans Web Regular";
     font-size: 20px;
     line-height: 22px;
-    font-weight: 400px;
+    font-weight: normal;
 }
 
 sub{

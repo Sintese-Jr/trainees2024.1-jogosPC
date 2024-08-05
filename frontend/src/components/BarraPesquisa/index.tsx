@@ -12,7 +12,22 @@ export default function BarraPesquisa(props: BarraPesquisaProps) {
                 type="search"
                 placeholder='Pesquisar'
                 className='barra-pesquisa'
-                onChange={props.setPesquisa}
+                onKeyUp={(event) => {
+                    if (event.key === 'Enter') {
+                        props.setPesquisa(event as unknown as React.ChangeEvent<HTMLInputElement>)
+                    }
+                }
+                }
+                onBlur={(event) => {
+                    props.setPesquisa(event as unknown as React.ChangeEvent<HTMLInputElement>)
+                }
+                }
+                onInput={(event) => {
+                    const input = event.target as HTMLInputElement;
+                    if (input.value === '') {
+                        props.setPesquisa(event as unknown as React.ChangeEvent<HTMLInputElement>);
+                    }
+                }}
             />
         </div>
     )

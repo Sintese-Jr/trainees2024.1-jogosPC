@@ -1,12 +1,12 @@
 
 export type JogosType = {
-    imagem: string;
-    developer: string;
+    background: string;
+    developer: string[];
     game: string;
-    genre: string;
-    publisher: string;
+    genre: string[];
+    publisher: string[];
     release_date: string;
     serie: string;
     total_copies_sold: string;
-    id: string;
+    id: number;
 }

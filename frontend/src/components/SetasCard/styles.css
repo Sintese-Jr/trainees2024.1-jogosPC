@@ -1,0 +1,25 @@
+.triangle-left-small{
+    width: 15px;
+    height: 15px;
+}
+
+.triangle-left-big{
+    width: 30px;
+    height: 30px;
+}
+
+.triangle-right-small{
+    width: 15px;
+    height: 15px;
+}
+
+.triangle-right-big{
+    width: 30px;
+    height: 30px;
+}
+
+.flex-title{ 
+    display:flex;
+    align-items: center;
+    gap:0px;
+}

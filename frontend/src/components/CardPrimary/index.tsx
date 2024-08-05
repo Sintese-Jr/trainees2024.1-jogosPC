@@ -6,7 +6,7 @@ interface CardSecondaryProps {
     size: "h5" | "h6" | "subtitle";
     border?: boolean;
     className?: string;
-    variant: "yellow" | "purple";
+    variant: "yellow" | "purple" | "date";
 }
 
 export default function CardSecondary(props: CardSecondaryProps) {
