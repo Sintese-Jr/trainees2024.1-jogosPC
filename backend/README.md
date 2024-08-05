@@ -133,5 +133,9 @@ Para acessar as diferentes funcionalidades, conecte-se nos respectivos endereço
     - Método de requisição HTTP: GET
     - Endereço: “ http://localhost:3001/pag/{número} ”
 
+- Listar Categorias de jogos
+    - Método de requisição HTTP: GET
+    - Endereço: “ http://localhost:3001/listar/generos ”
+
 
 
