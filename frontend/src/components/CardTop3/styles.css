@@ -1,0 +1,73 @@
+.podio {
+  background-color: var(--white1);
+  width: 15rem;
+}
+
+.podio-top-1 {
+  height: 500px;
+  order: 2;
+}
+
+.podio-top-2 {
+  height: 350px;
+  order: 1;
+}
+
+.podio-top-3 {
+  height: 250px;
+  order: 3;
+}
+
+.card-top3 {
+  max-height: 2.5rem;
+  height: auto;
+  font-family: "Determination Sans Web Regular";
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: 400px;
+  z-index: 1000;
+}
+.colocacao {
+}
+
+.top-1 {
+  background-color: var(--secondary3);
+  color: var(--primary1);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  height: 70%;
+}
+.top-2 {
+  background-color: var(--secondary3);
+  color: var(--primary1);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  height: 40%;
+}
+.top-3 {
+  background-color: var(--secondary3);
+  color: var(--primary1);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  height: 30%;
+}
+
+.box-imagem-top3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.imagem-top3 {
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.date-top3 {
+  color: #ebebeb;
+  align-self: flex-end;
+}

@@ -1,17 +1,22 @@
 .container-top-games {
-  width: 100%;
+  width: 100vw;
   min-height: 1268px;
   background-image: url("../../assets/images/top3.png");
   background-size: cover;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.container-top-games:last-child {
+  align-self: flex-end;
 }
 
 .list-genders {
+  width: 80vw;
   display: flex;
   margin-top: 50px;
   border: 1px solid var(--primary1);
-  width: 90vw;
   padding: 20px;
   border-radius: 12px;
   color: #fff;
@@ -19,7 +24,36 @@
   overflow-x: scroll;
 }
 
+.list-genders::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+.list-genders::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.list-genders::-webkit-scrollbar-thumb {
+  background: var(--primary1);
+  border-radius: 10px;
+  width: 5px !important;
+}
+
+.list-genders::-webkit-scrollbar-thumb:hover {
+  background: var(--primary2);
+}
+
 .generos {
   flex: 0 0 auto;
-  width: 100%;
+  margin-right: 10px;
+}
+
+.top3 {
+  width: 100vw;
+  height: 100%;
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
 }
