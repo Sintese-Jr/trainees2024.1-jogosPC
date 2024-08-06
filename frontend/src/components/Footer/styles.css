@@ -1,0 +1,74 @@
+.div-principal {
+  width: 100%;
+  height: 225px;
+  background-color: var(--Preto, #313338);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 200px;
+  padding-top: 70px;
+}
+
+.img-simon {
+  width: 100px;
+  height: 100px;
+}
+
+.tittle-mission {
+  color: white;
+  font-size: 40px;
+  margin-top: 0px;
+  display: flex;
+}
+.tittle-acess {
+  color: white;
+  font-size: 40px;
+}
+
+.hrzinho {
+  border-bottom: 4px solid black;
+}
+
+h6 {
+  font-family: "Determination Sans Web Regular";
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.nossa-missao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+}
+.arrowup {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary1);
+  border-radius: 50%;
+  border: 2px solid var(--secondary3);
+  box-shadow: 1.6px 1.6px 0px 0px #00000040;
+  cursor: pointer;
+}
+
+.arrow-center {
+  padding-top: 50px;
+}
+.acesso-rapido {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 20%;
+}
+
+.simon-div {
+  width: 10%;
+}
+
+.text {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
