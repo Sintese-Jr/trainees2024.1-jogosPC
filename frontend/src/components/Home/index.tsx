@@ -4,7 +4,7 @@ import './styles.css'
 
 export default function Home() {
     return (
-        <div className='container-home'>
+        <div className='container-home' id="home">
             <div className='header-home'>
                 <div className='items-left'>
                     <img src={SimonGamesImg} alt="" />

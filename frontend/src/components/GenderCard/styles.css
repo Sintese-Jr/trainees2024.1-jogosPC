@@ -1,4 +1,5 @@
 .gender-card {
+  width: fit-content;
   display: flex;
   align-items: center;
   background-color: transparent;

@@ -9,7 +9,6 @@
 
 .list-genders {
   display: flex;
-  justify-content: center;
   margin-top: 50px;
   border: 1px solid var(--primary1);
   width: 90vw;
@@ -17,4 +16,10 @@
   border-radius: 12px;
   color: #fff;
   z-index: 1;
+  overflow-x: scroll;
+}
+
+.generos {
+  flex: 0 0 auto;
+  width: 100%;
 }

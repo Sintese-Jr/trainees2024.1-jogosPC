@@ -30,7 +30,9 @@ export default function Footer() {
             </div>
 
             <div className="arrow-center">
-                <MdKeyboardArrowUp className="arrowup" />
+                <a href="#home">
+                    <MdKeyboardArrowUp className="arrowup" />
+                </a>
             </div>
 
 
