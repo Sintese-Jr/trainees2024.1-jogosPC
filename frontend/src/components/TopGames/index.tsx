@@ -7,26 +7,35 @@ import CardTop3 from '../CardTop3/index.tsx';
 import { JogosType } from '../../types/jogos.tsx';
 
 export default function TopGames() {
-  const [generos, setGeneros] = useState([]);
+  const [generos, setGeneros] = useState<string[]>([]);
   const [topGames, setTopGames] = useState<JogosType[]>([]);
   const [selectedGender, setSelectedGender] = useState('');
 
   function handleSelectGender(genero: string) {
-    setSelectedGender(genero);
-    api.fetchGamesGender(selectedGender).then((data) => {
+    api.fetchGamesGender(genero).then((data) => {
       setTopGames(data);
+      setSelectedGender(genero);  // Atualiza o estado após carregar os jogos
     });
   }
 
   useEffect(() => {
-    console.log(selectedGender);
-  }, [selectedGender]);
+    if (generos.length <= 0) return;
+
+    setTimeout(() => {
+      api.fetchGamesGender("Battle royale").then((data) => {
+        setTopGames(data);
+      });
+    }, 800);
+  }, [generos]);
 
   useEffect(() => {
-    api.fetchAllGenders().then((data) => {
-      setGeneros(data);
-      setSelectedGender(data[0]);
-    });
+    const fetchData = async () => {
+      await api.fetchAllGenders().then((data) => {
+        setGeneros(data);
+        setSelectedGender(data[0]);
+      });
+    }
+    fetchData();
   }, []);
 
   return (
@@ -43,6 +52,7 @@ export default function TopGames() {
         {
           topGames?.map((game, index) => (
             <CardTop3
+              key={index}
               ranking={index + 1}
               imagem={game.background}
               nome={game.game}
