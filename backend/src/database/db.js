@@ -83,15 +83,17 @@ async function BuscarJogos(nome) {
     }
 }
 
-async function BuscarGenero(genero) {
+async function BuscarGenero(genero, tamanho_da_pagina) {
     try {
         await connectDatabase();
 
         const genreGames = await game.find({genre: genero }, { _id: 0, __v: 0 });
+        
+        const sortedData = genreGames.sort(sortMyResults);
+        const paginatedData = sortedData.slice(0, tamanho_da_pagina);
 
-        genreGames.sort(sortMyResults);
 
-        return genreGames;
+        return paginatedData;
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
