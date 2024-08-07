@@ -1,6 +1,7 @@
 .podio {
-  background-color: var(--white1);
+  background-color: rgb(217, 217, 217, 0.3);
   width: 15rem;
+  border-radius: 12px;
 }
 
 .podio-top-1 {
@@ -19,55 +20,58 @@
 }
 
 .card-top3 {
-  max-height: 2.5rem;
-  height: auto;
+  height: 100%;
   font-family: "Determination Sans Web Regular";
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 8px;
   font-weight: 400px;
   z-index: 1000;
 }
+
 .colocacao {
+  width: 50px;
+  background-color: var(--secondary3);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgb(255, 255, 255, 0.25);
+  margin-bottom: 0px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
 }
 
 .top-1 {
-  background-color: var(--secondary3);
-  color: var(--primary1);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
-  height: 70%;
+  color: var(--primary2);
+  border: 1px solid var(--primary2);
 }
 .top-2 {
-  background-color: var(--secondary3);
-  color: var(--primary1);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
-  height: 40%;
+  color: var(--white2);
+  border: 1px solid var(--white2);
 }
 .top-3 {
-  background-color: var(--secondary3);
   color: var(--primary1);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
-  height: 30%;
+  border: 1px solid var(--primary1);
 }
 
 .box-imagem-top3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 240px;
+  overflow: hidden;
 }
 .imagem-top3 {
-  width: 100px;
-  height: 100%;
-  object-fit: cover;
+  width: 100%;
+
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .date-top3 {
+  display: flex;
+  align-items: flex-end;
   color: #ebebeb;
-  align-self: flex-end;
+  height: 100%;
 }

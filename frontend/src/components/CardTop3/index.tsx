@@ -16,7 +16,7 @@ export default function CardTop3(props: CardTop3Props) {
     return (
         <div className={`podio-${props.variant} podio`}>
             <div className="card-top3">
-                <div className={`colocacao ${props.variant}`}>{props.ranking}</div>
+                <div className={`${props.variant} colocacao`}>{props.ranking}</div>
                 <div className="imagem-top3">
                     <div className="box-imagem-top3">
                         <img src={`${props.imagem}`} className="imagem-top3" />
@@ -27,9 +27,9 @@ export default function CardTop3(props: CardTop3Props) {
                     <CardPrimary texto={props.vendas} size='h6' variant='yellow' />
 
                 </div>
+                <div className="date-top3">{props.data}</div>
             </div>
 
-            <div className="date-top3">{props.data}</div>
         </div>
     );
 }
