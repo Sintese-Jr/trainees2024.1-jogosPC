@@ -1,7 +1,7 @@
 .div-principal {
   width: 100vw;
   height: auto;
-  background-color: var(--Preto, #313338);
+  background-color: #242325;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -34,7 +34,7 @@
 h6 {
   font-family: "Determination Sans Web Regular";
   font-weight: normal;
-  line-height: 2rem !important;
+  line-height: 1.8rem !important;
   margin: 0px;
 }
 
@@ -43,10 +43,16 @@ h6 {
   flex-direction: column;
   gap: 10px;
   width: 40%;
+  
+  
+  
 }
+
+
+
 .arrowup {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background-color: var(--primary1);
   border-radius: 50%;
   border: 2px solid var(--secondary3);
@@ -55,13 +61,14 @@ h6 {
 }
 
 .arrow-center {
-  padding-top: 50px;
-  padding-right: 60px;
+  padding-top: 65px;
+  padding-right: 150px;
 }
+
 .acesso-rapido {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   width: 20%;
 }
 
@@ -77,3 +84,10 @@ h6 {
   font-size: 18px;
   text-align: justify;
 }
+
+
+
+    
+  
+  
+    

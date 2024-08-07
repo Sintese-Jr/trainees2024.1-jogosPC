@@ -13,9 +13,9 @@ export default function Footer() {
             </div>
 
             <div className="nossa-missao">
-                <h6 className="tittle-mission" >Nossa Missão</h6>
+                <h6 className="tittle-mission" >Sobre Nós</h6>
                 <div className="hrzinho"></div>
-                <h6 className="text" >Na Simon Games, nossa missão é apresentar os jogos mais vendidos do mundo. Nosso objetivo é ser a principal fonte de informações sobre os títulos mais populares, oferecendo uma visão clara e atualizada do mercado de games. Aqui, você encontrará uma lista dos jogos que conquistaram milhões de jogadores ao redor do mundo.</h6>
+                <h6 className="text" >Simon Games é um site, criado em 2024, com o objetivo de oferecer uma plataforma onde jogadores possam acessar facilmente informações sobre os jogos mais populares para computador !</h6>
             </div  >
 
 
