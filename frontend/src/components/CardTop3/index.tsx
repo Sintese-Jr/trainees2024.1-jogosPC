@@ -14,7 +14,7 @@ interface CardTop3Props {
 
 export default function CardTop3(props: CardTop3Props) {
     return (
-        <div className={`podio-${props.variant} podio`}>
+        <div className={`podio-${props.variant} podio`} id="top3">
             <div className="card-top3">
                 <div className={`${props.variant} colocacao`}>{props.ranking}</div>
                 <div className="imagem-top3">

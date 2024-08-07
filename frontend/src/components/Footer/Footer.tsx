@@ -6,7 +6,7 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 export default function Footer() {
     return (
 
-        <div className="div-principal">
+        <div className="div-principal" id="sobre_nos">
 
             <div className="simon-div">
                 <img src={SimonIMG} />
@@ -23,9 +23,15 @@ export default function Footer() {
 
                 <h6 className="tittle-acess"> Acesso Rápido</h6>
                 <div className="hrzinho"></div>
-                <h6 className="text" >Home</h6>
-                <h6 className="text" >Top 3 </h6>
-                <h6 className="text" >Ranking Geral/Catálogo</h6>
+                <h6 className="text" >
+                    <a href="#home"> Home </a>
+                </h6>
+                <h6 className="text" >
+                    <a href="#top3"> Top 3 </a>
+                </h6>
+                <h6 className="text" >
+                    <a href="#catalogo"> Ranking Geral/Catálogo </a>
+                </h6>
 
             </div>
 

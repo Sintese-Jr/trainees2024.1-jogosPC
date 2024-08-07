@@ -22,6 +22,7 @@
   margin-top: 0px;
   display: flex;
 }
+
 .tittle-acess {
   color: white;
   font-size: 30px;
@@ -43,12 +44,7 @@ h6 {
   flex-direction: column;
   gap: 10px;
   width: 40%;
-  
-  
-  
 }
-
-
 
 .arrowup {
   width: 45px;
@@ -85,9 +81,7 @@ h6 {
   text-align: justify;
 }
 
-
-
-    
-  
-  
-    
+a {
+  color: white;
+  text-decoration: none;
+}
