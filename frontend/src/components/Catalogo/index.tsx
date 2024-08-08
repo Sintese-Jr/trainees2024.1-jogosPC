@@ -39,6 +39,7 @@ export default function Catalogo() {
 
     const fetchGames = async () => {
         const jogosData = await api.fetchGames(paginaAtual);
+        console.log(jogosData);
         setJogos(jogosData);
     };
 
@@ -126,7 +127,7 @@ export default function Catalogo() {
 
                 <SecaoCatalogo>
                     {
-                        jogos && !erroBusca ? jogos?.map((jogo_atual, index) => {
+                        jogos && !erroBusca ? jogos?.map((jogo_atual) => {
                             return (
                                 <CardJogos
                                     key={jogo_atual.id}

@@ -1,4 +1,3 @@
-
 export type JogosType = {
     background: string;
     developer: string[];

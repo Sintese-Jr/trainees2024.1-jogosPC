@@ -13,10 +13,14 @@ export default function TopGames() {
 
   function handleSelectGender(genero: string) {
     api.fetchGamesGender(genero).then((data) => {
+      console.log("Dados retornados:", data);
       setTopGames(data);
-      setSelectedGender(genero);  // Atualiza o estado após carregar os jogos
+      setSelectedGender(genero);
+    }).catch(error => {
+      console.error("Erro ao buscar jogos:", error);
     });
   }
+
 
   useEffect(() => {
     if (generos.length <= 0) return;
@@ -30,20 +34,24 @@ export default function TopGames() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await api.fetchAllGenders().then((data) => {
+      try {
+        const data = await api.fetchAllGenders();
         setGeneros(data);
         setSelectedGender(data[0]);
-      });
-    }
+      } catch (error) {
+        console.error("Erro ao buscar gêneros:", error);
+      }
+    };
     fetchData();
   }, []);
+
 
   return (
     <div className='container-top-games'>
       <div style={{ marginTop: "2rem" }}><TituloSecao titulo='TOP 3' /></div>
       <div className='list-genders'>
-        {generos?.map((genero) => (
-          <div className='genero'>
+        {generos?.map((genero, index) => (
+          <div key={index} className='genero'>
             <GenderCard text={genero} cardSelected={selectedGender} onClick={handleSelectGender} />
           </div>
         ))}

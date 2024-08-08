@@ -1,6 +1,6 @@
 {
-  "short_name": "Catalogo de jogos",
-  "name": "Catalogo de jogos",
+  "short_name": "Simon Games",
+  "name": "Simon Games",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "PacSimon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "PacSimon.png",
       "type": "image/png",
       "sizes": "512x512"
     }

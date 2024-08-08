@@ -1,6 +1,6 @@
 .container-top-games {
   width: 100vw;
-  min-height: 1268px;
+  min-height: 120vh;
   background-image: url("../../assets/images/top3.png");
   background-size: cover;
   display: flex;
@@ -53,7 +53,7 @@
   height: 100%;
   margin-top: 100px;
   display: flex;
-  gap: 20px;
+  gap: 70px;
   justify-content: center;
   align-items: flex-end;
 }

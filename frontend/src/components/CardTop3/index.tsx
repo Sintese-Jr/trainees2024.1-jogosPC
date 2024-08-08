@@ -27,9 +27,8 @@ export default function CardTop3(props: CardTop3Props) {
                     <CardPrimary texto={props.vendas} size='h6' variant='yellow' />
 
                 </div>
-                <div className="date-top3">{props.data}</div>
             </div>
-
+            <div className="date-top3"> {props.data.replaceAll('-', '/')} </div>
         </div>
     );
 }
