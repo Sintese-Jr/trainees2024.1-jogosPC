@@ -64,7 +64,7 @@ app.get("/genero/:genero", async (req, res) => {
 app.get("/listar/generos", async (req, res) => {
     const jogos = await ListarJogos();
 
-    const generos = jogos.map(jogo => jogo.genre);
+    const generos = jogos?.map(jogo => jogo.genre);
 
     const meusGeneros = [...new Set(generos)];
 

@@ -7,8 +7,8 @@ async function connectDatabase() {
         await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos")
     } catch (error) {
         console.log("Erro na conexão com o banco de dados: " + error.message);
-        return { error: error.message } 
-    } 
+        return { error: error.message }
+    }
 }
 
 function sortMyResults(a, b) {
@@ -18,13 +18,13 @@ function sortMyResults(a, b) {
 async function ListarJogos(limite = null) {
     try {
         await connectDatabase();
-
-        const games =  await game.find({}, { _id: 0, __v: 0 }).limit(limite);
+        const games = await game.find({}, { _id: 0, __v: 0 }).limit(limite);
 
         /*
-        Deus abençoe o JavaScript
-
-        sort() é um método que ordena um array de acordo com uma função de comparação. Nesse caso, eu tenho a versão NUMÉRICA do total copies sold de cada jogo, tiro a diferença entre eles e ordeno de forma decrescente.
+            Deus abençoe o JavaScript
+            .sort() é um método que ordena um array de acordo com uma função de comparação. 
+            Nesse caso, eu tenho a versão NUMÉRICA do total copies sold de cada jogo, 
+            tiro a diferença entre eles e ordeno de forma decrescente.
         */
         games.sort(sortMyResults);
 
@@ -32,13 +32,11 @@ async function ListarJogos(limite = null) {
     } catch (error) {
         console.log("Erro ao listar jogos: " + error.message);
         return [];
-    } finally {
-        mongoose.disconnect();
     }
 }
 
-async function BuscarPag(numPag, tamanho_da_pagina){
-    try{
+async function BuscarPag(numPag, tamanho_da_pagina) {
+    try {
         await connectDatabase();
 
         numPag = parseInt(numPag, 10) || 1;
@@ -60,9 +58,7 @@ async function BuscarPag(numPag, tamanho_da_pagina){
 
     } catch (error) {
         console.log("Erro ao buscar por página: " + error.message);
-        return[];
-    } finally {
-        mongoose.disconnect();
+        return [];
     }
 }
 
@@ -70,7 +66,7 @@ async function BuscarJogos(nome) {
     try {
         await connectDatabase();
 
-        const foundGames = await game.find({game: new RegExp(nome, 'i')}, { _id: 0, __v: 0 });
+        const foundGames = await game.find({ game: new RegExp(nome, 'i') }, { _id: 0, __v: 0 });
 
         foundGames.sort(sortMyResults);
 
@@ -78,8 +74,6 @@ async function BuscarJogos(nome) {
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
-    } finally {
-        mongoose.disconnect();
     }
 }
 
@@ -87,8 +81,8 @@ async function BuscarGenero(genero, tamanho_da_pagina) {
     try {
         await connectDatabase();
 
-        const genreGames = await game.find({genre: genero }, { _id: 0, __v: 0 });
-        
+        const genreGames = await game.find({ genre: genero }, { _id: 0, __v: 0 });
+
         const sortedData = genreGames.sort(sortMyResults);
         const paginatedData = sortedData.slice(0, tamanho_da_pagina);
 
@@ -97,22 +91,23 @@ async function BuscarGenero(genero, tamanho_da_pagina) {
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return [];
-    } finally {
-        mongoose.disconnect();
     }
 }
 
-async function quantitade_jogo(){
+async function quantitade_jogo() {
     try {
         await connectDatabase();
 
-        return  await game.countDocuments();
+        return await game.countDocuments();
     } catch (error) {
         console.log("Erro ao buscar jogos: " + error.message);
         return 0;
-    } finally {
-        mongoose.disconnect();
     }
 }
 
-export { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo};
+process.on('SIGINT', async () => {
+    await mongoose.disconnect();
+    console.log('Desconectado do MongoDB');
+    process.exit(0);
+});
+export { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo };

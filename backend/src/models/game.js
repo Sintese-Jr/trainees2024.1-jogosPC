@@ -11,14 +11,14 @@ const gameSchema = new mongoose.Schema({
     'developer': String,
     'publisher': String,
     'id': Number,
-    'imagem': String, 
+    'imagem': String,
     'ranking': {
         type: Number,
         default: 0 // or any default value you prefer
     }
-}, {collection: 'Jogos'})
+}, { collection: 'Jogos' })
 
 
-const game = mongoose.model('game', gameSchema)
+const game = mongoose.model('Jogos', gameSchema)
 
 export default game
