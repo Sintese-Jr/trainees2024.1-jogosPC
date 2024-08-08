@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Projeto React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto React básico criado para servir como ponto de partida para o desenvolvimento de aplicações web. Siga as instruções abaixo para configurar o ambiente de desenvolvimento e iniciar o servidor.
 
-## Available Scripts
+## Pré-requisitos
 
-In the project directory, you can run:
+Antes de começar, certifique-se de ter o Node.js e o npm (Node Package Manager) instalados em sua máquina.
 
-### `npm start`
+- **Node.js**: [Download Node.js](https://nodejs.org)
+- **npm**: O npm é instalado automaticamente junto com o Node.js.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Instalação
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Instale as dependências do projeto**:
 
-### `npm test`
+   ```bash
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Executando o Servidor de Desenvolvimento
 
-### `npm run build`
+A forma mais fácil de iniciar o servidor de desenvolvimento é utilizando o npm. Siga os passos abaixo:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Inicie o servidor**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Este comando vai iniciar o servidor de desenvolvimento e abrir automaticamente o projeto em seu navegador padrão.
 
-### `npm run eject`
+2. **Visualizando a aplicação**:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Se o navegador não abrir automaticamente, acesse manualmente o endereço abaixo:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```
+   http://localhost:3000
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   O servidor estará escutando na porta `3000` por padrão.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Estrutura do Projeto
 
-## Learn More
+- **`src/`**: Contém todos os arquivos fonte da aplicação.
+- **`public/`**: Arquivos estáticos e o arquivo `index.html`.
+- **`package.json`**: Lista de dependências e scripts npm.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Scripts Disponíveis
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+No diretório do projeto, você pode executar os seguintes comandos:
 
-### Code Splitting
+- **`npm start`**: Inicia o servidor de desenvolvimento.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contribuição
 
-### Analyzing the Bundle Size
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Licença
 
-### Making a Progressive Web App
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Esse `README.md` fornece uma visão geral clara de como configurar e iniciar o projeto React, destacando o uso do comando `npm start` como a maneira mais fácil de iniciar o servidor.
