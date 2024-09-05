@@ -2,12 +2,22 @@ import mongoose from 'mongoose';
 import game from '../models/game.js'
 import { convertCopiesSoldToNumbers } from '../models/data_format.js';
 
+let isConnected = false; 
+
 async function connectDatabase() {
+    if (isConnected) return;
+
     try {
-        await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos")
+        await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos", {
+            maxPoolSize: 15, 
+            serverSelectionTimeoutMS: 5000,
+            socketTimeoutMS: 45000,
+        });
+        isConnected = true;
+        console.log('Conectado ao MongoDB');
     } catch (error) {
         console.log("Erro na conexão com o banco de dados: " + error.message);
-        return { error: error.message }
+        throw new Error('Erro na conexão com o banco de dados');
     }
 }
 
@@ -106,8 +116,11 @@ async function quantitade_jogo() {
 }
 
 process.on('SIGINT', async () => {
-    await mongoose.disconnect();
-    console.log('Desconectado do MongoDB');
+    if (mongoose.connection.readyState === 1) {
+        await mongoose.disconnect();
+        console.log('Desconectado do MongoDB');
+    }
     process.exit(0);
 });
+
 export { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo };
