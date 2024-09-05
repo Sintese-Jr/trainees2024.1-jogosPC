@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo } from './src/database/db.js';
 import convertGameToResponseGame from './src/models/responseGame.js';
-import { convertStringToArray } from './src/models/data_format.js';
 
 const app = express();
 app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
