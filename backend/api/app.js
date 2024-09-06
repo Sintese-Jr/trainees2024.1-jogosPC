@@ -1,14 +1,11 @@
 import express from 'express';
+import serverless from 'serverless-http';
 import cors from 'cors';
-import { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo } from './src/database/db.js';
-import convertGameToResponseGame from './src/models/responseGame.js';
+import { ListarJogos, BuscarJogos, BuscarGenero, BuscarPag, quantitade_jogo } from '../src/database/db.js';
+import convertGameToResponseGame from '../src/models/responseGame.js';
 
 const app = express();
-app.use(cors()); // Confirugração do CORS para permitir que o frontend acesse o backend ;)
-/*
- Pra saber mais: https://www.telerik.com/blogs/all-you-need-to-know-cors-errors
-*/
-const PORT = 3001;
+app.use(cors()); 
 let tamanho_das_paginas = 15;
 
 app.get('/', async (req, res) => {
@@ -70,7 +67,4 @@ app.get("/listar/generos", async (req, res) => {
     res.json(meusGeneros);
 });
 
-app.listen(PORT, () => {
-    console.log(`> Servidor de Jogos iniciado na porta ${PORT}`);
-    console.log(`> Recomendação: utilize a função fetch("http://localhost:${PORT}") para conseguir seus dados ;)'`);
-})
+export const handler = serverless(app); 
