@@ -1,0 +1,15 @@
+{
+    "functions": {
+      "api/**/*.js": {
+        "runtime": "nodejs20.x"
+      }
+    },
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/api/index.js"
+      }
+    ],
+    "trailingSlash": false
+  }
+  
