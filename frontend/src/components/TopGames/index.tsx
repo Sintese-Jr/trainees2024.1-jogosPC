@@ -13,7 +13,7 @@ export default function TopGames() {
 
   function handleSelectGender(genero: string) {
     api.fetchGamesGender(genero).then((data) => {
-      console.log("Dados retornados:", data);
+
       setTopGames(data);
       setSelectedGender(genero);
     }).catch(error => {

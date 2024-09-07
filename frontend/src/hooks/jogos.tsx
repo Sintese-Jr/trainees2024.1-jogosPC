@@ -15,7 +15,6 @@ export const api = {
     fetchGames: async (page: number): Promise<JogosType[]> => {
         try {
             const response = await axios.get(`/pag/${page}`);
-            console.log("Dados retornados:", response);
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);
