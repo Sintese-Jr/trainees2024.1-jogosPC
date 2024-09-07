@@ -39,7 +39,6 @@ export default function Catalogo() {
 
     const fetchGames = async () => {
         const jogosData = await api.fetchGames(paginaAtual);
-        console.log(jogosData);
         setJogos(jogosData);
     };
 
@@ -108,7 +107,6 @@ export default function Catalogo() {
         };
         setNavegationActive(false);
         fetchGamesBySearch();
-        console.log(valorDaBusca);
     }, [valorDaBusca]);
 
     useEffect(() => {
