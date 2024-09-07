@@ -1,0 +1,38 @@
+.gender-card {
+  width: fit-content;
+  font-family: "Determination Sans Web Regular";
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--primary1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3;
+  /* deixar o texto sem quebrar (ele fica em linha reta sempre)*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
+}
+
+.gender-card-active {
+  width: fit-content;
+  font-family: "Determination Sans Web Regular";
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary1);
+  color: var(--secondary3);
+  border: 1px solid var(--secondary4);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3;
+  /* deixar o texto sem quebrar (ele fica em linha reta sempre)*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
+}

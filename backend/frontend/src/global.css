@@ -1,0 +1,91 @@
+@font-face {
+    font-family:"Determination Sans Web Regular";
+    src:url("./assets/fonts/determinationsansweb-webfont.ttf");
+}
+
+*{
+    scroll-behavior: smooth;
+} 
+
+html{
+    --primary1: #F7C22F;
+    --primary2: #FFE978;
+    --primary3: #C09D37;
+    --primary4: #F8EAC6;
+    
+
+    --secondary1: #682E93;
+    --secondary2: #884FB2;
+    --secondary3: #3F1E55;
+    --secondary4: #281933;
+    --secondary5: #682E9333;
+
+    --white1: #F7F7F7;
+    --white2: #EBEBEB;
+    --white3: #D9D9D9;
+
+    --black: #313338;
+    
+}
+
+body{
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow-x: hidden;
+}
+
+h1{
+    font-family: "Determination Sans Web Regular";
+    font-size: 72px;
+    line-height: 44px;
+    font-weight: 400px;
+}
+
+h2{
+    font-family: "Determination Sans Web Regular";
+    font-size: 64px;
+    line-height: 40px;
+    font-weight: 400px;
+}
+
+h3{
+    font-family: "Determination Sans Web Regular";
+    font-size: 40px;
+    line-height: 36px;
+    font-weight: 400px;
+}
+
+h4{
+    font-family: "Determination Sans Web Regular";
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 400px;
+}
+
+h5{
+    font-family: "Determination Sans Web Regular";
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400px ;
+}
+
+h6{
+    font-family: "Determination Sans Web Regular";
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: normal;
+}
+
+sub{
+    font-family: "Determination Sans Web Regular";
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400px;
+}
+
+caption{
+    font-family: "Determination Sans Web Regular";
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400px;
+}

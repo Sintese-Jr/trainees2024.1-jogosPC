@@ -1,0 +1,75 @@
+.secao-navegacao {
+    display: flex;
+    align-items: center;
+    gap:24px;
+    justify-content: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 28px;
+}
+
+.double-arrow-left-unable, .double-arrow-right-unable {
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary3);
+    border-radius: 50%;
+    border: 2px solid var(--secondary1);
+    box-shadow: 1.6px 1.6px 0px 0px #00000040;
+    transition: 0.5s;
+}
+
+.arrow-left-unable, .arrow-right-unable {
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary3);
+    border-radius: 50%;
+    border: 2px solid var(--secondary1);
+    box-shadow: 1.6px 1.6px 0px 0px #00000040;
+    transition: 0.5s;
+}
+
+.arrow-right-able, .arrow-left-able {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary1);
+    border-radius: 50%;
+    border: 2px solid var(--secondary3);
+    box-shadow: 1.6px 1.6px 0px 0px #00000040;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.double-arrow-right-able, .double-arrow-left-able {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary1);
+    border-radius: 50%;
+    border: 2px solid var(--secondary3);
+    box-shadow: 1.6px 1.6px 0px 0px #00000040;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input-pagina {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 4px;
+    height: 18px;
+    width: 40px;
+    padding: 8px;
+    font-size: 28px;
+    background-color: var(--secondary3);
+    border: 2px solid var(--primary1);
+    font-family: "Determination Sans Web Regular";
+    color: var(--white1);
+}
+
+.input-pagina::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.input-pagina:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0; /* tira a linha de fora ao clicar no input */ 
+}

@@ -1,0 +1,13 @@
+.secao-catalogo {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  flex-wrap: wrap;
+  border-bottom: 4px solid var(--primary1);
+  border-top: 4px solid var(--primary1);
+  border-radius: 4px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

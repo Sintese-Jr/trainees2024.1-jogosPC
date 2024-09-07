@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import "dotenv/config";
 import game from '../models/game.js'
 import { convertCopiesSoldToNumbers } from '../models/data_format.js';
 
@@ -10,8 +11,8 @@ async function connectDatabase() {
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
             maxPoolSize: 15, 
-            serverSelectionTimeoutMS: 5000,
-            socketTimeoutMS: 45000,
+            serverSelectionTimeoutMS: 10000,  
+            socketTimeoutMS: 60000,           
         });
         isConnected = true;
         console.log('Conectado ao MongoDB');

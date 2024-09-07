@@ -1,0 +1,17 @@
+.modal {
+    transition: 0.5s;
+}
+
+.loading{
+
+    width: 100px;
+    height: 100px;
+    color: red;
+   
+}
+
+.errorGame{
+    color: white;
+    font-weight: normal !important;
+    font-size: 28px;
+}

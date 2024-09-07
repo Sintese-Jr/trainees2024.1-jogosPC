@@ -1,0 +1,29 @@
+.container-pesquisa{
+    display: flex;
+    justify-content: center;
+    offset: 5vw;
+}
+
+.barra-pesquisa {
+    text-align: center;
+    border-radius: 12px;
+    height: 50px;
+    width: 80%;
+    padding: 8px;
+    font-size: 28px;
+    background-color: rgb(136, 79, 178, 0.2); 
+    border: 1px solid var(--primary1);                                                                          
+    font-family: "Determination Sans Web Regular";
+    color: var(--white1);
+    margin-bottom: 50px;
+}
+
+.barra-pesquisa:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0; /* tira a linha de fora ao clicar no input */ 
+}
+
+.barra-pesquisa::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+

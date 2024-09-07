@@ -1,0 +1,80 @@
+.fundo-card-open, .fundo-card-close{
+    height: 100%;
+    width: 264px;
+    background-color: rgb(217,217,217, 0.3);
+    border: 1px solid var(--primary4);
+    border-radius: 12px;
+    padding: 20px;
+    transform: scale(0.9);
+    transition: 0.4s;
+    /* filter: blur(1px); */
+}
+
+.fundo-card-open{
+    background-color: 
+    #545454;
+}
+
+.nome-card{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width:30%;
+}
+
+.grid-info {
+    display: grid;
+    row-gap: 10px;  
+    padding: 10px;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;  
+    align-items: center; 
+    gap: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.item-right {
+    justify-self: end;  
+}
+
+.flex-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    padding-top: 10px;
+}
+
+.info-list{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    flex-direction: row;
+    display: flex;
+    border-radius: 4px;
+    border: 2px dashed var(--Primria-4, rgba(248, 234, 198, 0.30)); /* borda pontilhada*/ 
+    flex-wrap: wrap;
+}
+
+.info-list-date{
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    text-align: right;
+    display: flex;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    margin: 0px;
+}
+
+.fundo-card-close:hover {
+    transform: scale(1.0);
+    transition: 0.4s;
+    cursor: pointer;
+}
