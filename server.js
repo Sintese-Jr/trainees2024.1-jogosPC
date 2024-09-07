@@ -45,8 +45,6 @@ app.get("/pag/:numPag", async (req, res) => {
 app.get("/:nome", async (req, res) => {
     const jogosPesquisados = await BuscarJogos(req.params.nome);
 
-    console.log(jogosPesquisados);
-
     const updatedJogos = jogosPesquisados.map(jogo => {
         return convertGameToResponseGame(jogo);
     });
