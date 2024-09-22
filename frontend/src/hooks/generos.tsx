@@ -4,7 +4,7 @@ import { JogosType } from "../types/jogos";
 export const api = {
     fetchGamesGender: async (gender: string): Promise<JogosType[]> => {
         try {
-            const response = await axios.get(`/genero/${gender}`);
+            const response = await axios.get(`https://jogos-api.onrender.com/genero/${gender}`);
             return response.data;
         } catch (error) {
             console.error(`Erro ao buscar jogos com o genero: ${gender} -`, error);
@@ -13,7 +13,7 @@ export const api = {
     },
     fetchAllGenders: async () => {
         try {
-            const response = await axios.get("/listar/generos");
+            const response = await axios.get("https://jogos-api.onrender.com/listar/generos");
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar generos dos jogos: ", error);

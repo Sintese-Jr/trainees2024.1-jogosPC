@@ -5,7 +5,7 @@ export const api = {
     /**requisição para exibir os jogos */
     fetchAllGames: async () => {
         try {
-            const response = await axios.get("/");
+            const response = await axios.get("https://jogos-api.onrender.com/");
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);
@@ -14,7 +14,7 @@ export const api = {
     },
     fetchGames: async (page: number): Promise<JogosType[]> => {
         try {
-            const response = await axios.get(`/pag/${page}`);
+            const response = await axios.get(`https://jogos-api.onrender.com/pag/${page}`);
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);
@@ -23,7 +23,7 @@ export const api = {
     },
     fetchTotalPags: async () => {
         try {
-            const response = await axios.get("/pag");
+            const response = await axios.get("https://jogos-api.onrender.com/pag");
             return response.data.pages;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);
@@ -32,7 +32,7 @@ export const api = {
     },
     fetchGamesBySearch: async (search: string): Promise<JogosType[]> => {
         try {
-            const response = await axios.get(`/${search}`);
+            const response = await axios.get(`https://jogos-api.onrender.com/${search}`);
             return response.data;
         } catch (error) {
             console.error("Erro ao buscar jogos:", error);

@@ -9,7 +9,7 @@ async function connectDatabase() {
     if (isConnected) return;
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
+        await mongoose.connect("mongodb+srv://back:WZsfQutJJgXOGzxw@cluster0.ih9ygex.mongodb.net/Jogos", {
             maxPoolSize: 15, 
             serverSelectionTimeoutMS: 10000,  
             socketTimeoutMS: 60000,           
