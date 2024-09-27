@@ -18,3 +18,16 @@
   font-weight: 400;
   text-shadow: 4px 4px 0px #361b48;
 }
+
+@media screen and (max-width: 768px) {
+  .tituloSecao {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .titulo {
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px #361b48;
+  }
+}

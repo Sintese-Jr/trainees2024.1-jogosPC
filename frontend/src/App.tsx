@@ -11,7 +11,7 @@ function App() {
       <Home />
       <TopGames />
       <Catalogo />
-      <Footer/>
+      <Footer />
     </>
   );
 }
